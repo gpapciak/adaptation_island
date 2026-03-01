@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Camp on the Adaptation Island property on McNutt's Island, Nova Scotia. Join the tending community — come as a participant, not a tourist. Stewardship, foraging, trail work, ecological observation.">
+  <meta property="og:title" content="Come &amp; Tend — Adaptation Island">
+  <meta property="og:description" content="Camp on the property. Join the tending community. Come as a participant, not a tourist — stewardship, foraging, trail work, and bearing witness on McNutt's Island, Nova Scotia.">
+  <title>Come &amp; Tend — Adaptation Island · A Property on McNutt's Island, Nova Scotia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .tend-hero-bg::before {
+      background: linear-gradient(150deg, #1A4A1A 0%, #2A6A3A 40%, #D4A853 80%, #1A3A5C 100%);
+    }
+
+    /* Camping section */
+    .camping-why {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: var(--space-lg);
+    }
+
+    .why-item {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--sand);
+      border-radius: 10px;
+    }
+
+    .why-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+      color: var(--gold);
+      font-family: serif;
+    }
+
+    .why-item h4 { margin-bottom: 0.6rem; }
+    .why-item p  { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 0; }
+
+    /* Tending activities */
+    .tending-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: var(--space-lg);
+    }
+
+    .tending-activity {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding: 1.75rem;
+      background: var(--cream);
+      border-radius: 8px;
+      border-left: 4px solid var(--seaglass);
+    }
+
+    .tend-number {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--seaglass-light);
+      line-height: 1;
+    }
+
+    .tending-activity h4 { margin-bottom: 0.5rem; }
+    .tending-activity p  { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 0; }
+
+    /* The ask section */
+    .the-ask {
+      background: var(--teal-dark);
+      color: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .ask-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: var(--space-lg);
+    }
+
+    .ask-list {
+      padding: 0;
+    }
+
+    .ask-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.95rem;
+      color: var(--seaglass-pale);
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .ask-list li::before {
+      content: '→';
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .ask-list li:last-child { border-bottom: none; }
+
+    /* Community vision */
+    .community-section {
+      background: var(--ocean-deep);
+      padding: var(--space-xl) 0;
+    }
+
+    .ethics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: var(--space-lg);
+    }
+
+    .ethic-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 1.75rem;
+      border-top: 3px solid var(--gold);
+    }
+
+    .ethic-card h4 { color: var(--cream); margin-bottom: 0.6rem; }
+    .ethic-card p  { color: var(--stone); font-size: 0.9rem; margin-bottom: 0; }
+
+    /* Contact / gather section */
+    .gather-section {
+      background: var(--sand);
+      padding: var(--space-xl) 0;
+    }
+
+    @media (max-width: 900px) {
+      .camping-why  { grid-template-columns: 1fr; }
+      .tending-grid { grid-template-columns: 1fr; }
+      .ask-columns  { grid-template-columns: 1fr; gap: 2rem; }
+      .ethics-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="min-height:60vh; display:flex; align-items:center;">
+    <div class="page-hero-media">
+      <div class="photo-ph photo-ph--meadow tend-hero-bg" style="position:absolute;inset:0;height:100%;aspect-ratio:unset;border-radius:0;">
+        <span class="photo-ph__label">Photo: Morning at the property — fire going, someone up early, mist in the meadow</span>
+      </div>
+    </div>
+    <div class="page-hero-overlay"></div>
+    <div style="position:relative;z-index:2; max-width:var(--max-width); margin:0 auto; padding: calc(var(--space-xl) + 2rem) 2rem var(--space-xl);">
+      <span class="hero-eyebrow">Stewardship & Community</span>
+      <h1 class="fade-in" style="color:var(--cream);">Come & Tend</h1>
+      <p class="lead fade-in fade-in-delay-1" style="color:rgba(242,235,217,0.88); max-width:52ch;">This is an invitation — not to tourism, but to participation. Come as someone who is willing to be changed by this place, and willing to give something back to it.</p>
+      <a href="#the-invitation" class="btn btn--primary fade-in fade-in-delay-2">Read the invitation</a>
+    </div>
+  </section>
+
+  <!-- INVITATION -->
+  <section class="section section--sand" id="the-invitation">
+    <div class="container--narrow">
+      <div class="fade-in">
+        <span class="eyebrow">An Honest Invitation</span>
+        <h2>Not glamping. Not tourism. Presence.</h2>
+        <p class="lead">What we're inviting you to is genuinely immersive — sleeping under the island sky, waking to its sounds, earning your relationship with the land through days spent moving through it and tending it.</p>
+      </div>
+      <div class="grid grid--1-2" style="gap:4rem; align-items:start; margin-top:var(--space-lg);">
+        <div class="fade-in">
+          <p style="color:var(--text-mid);">When you come here, you camp: a tent in Arcadia Meadow or out at Ends of the Earth, a fire in the ring, food cooked over flame and eaten watching whatever the evening light is doing to the channel. The cabin exists as infrastructure — a place to cook in rain, to dry gear, to orient yourself before heading back out. The experience itself is the land.</p>
+          <p style="color:var(--text-mid);">This is intentional. The mode of presence matters. If you arrive by ferry and walk in, you have already done something different than you would do arriving by car. If you sleep in a tent in a field under an October sky full of stars, you wake up knowing something about this place that no day trip teaches. If you spend three hours on your knees pulling invasive species from a bog margin, you understand what "invasive" means in a way that reading about it does not provide.</p>
+          <p style="color:var(--text-mid);">The tending community this property aims to build is not a nostalgia club or a grief circle. It is a group of people who looked clearly at a threatened place and decided to show up for it — not because they could fix it, but because showing up matters. Because what you love deserves your presence.</p>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div class="photo-ph photo-ph--cabin ar-portrait" style="border-radius:8px; margin-bottom:1.5rem;">
+            <span class="photo-ph__label">Photo: Evening at Paradise Cabin — fire, people, the day's work done</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CAMPING -->
+  <section class="section">
+    <div class="container--narrow">
+      <div class="fade-in text-center mb-lg">
+        <span class="eyebrow">Why Camping</span>
+        <h2>Why sleeping here matters</h2>
+      </div>
+      <div class="camping-why">
+        <div class="why-item fade-in">
+          <span class="why-icon">☽</span>
+          <h4>Night teaches differently</h4>
+          <p>The island's night sounds — loons on the channel, the wind through spruce, the distant horn of a vessel in fog — are part of what this place is. You cannot hear them from a hotel in Shelburne. You sleep in them here.</p>
+        </div>
+        <div class="why-item fade-in fade-in-delay-1">
+          <span class="why-icon">☀</span>
+          <h4>Dawn is the best hour</h4>
+          <p>The bald eagles start fishing the channel in the early morning. The meadow holds dew until the sun gets above the spruce. The world has a quality at 5 a.m. on a coastal island that it does not have at any other time. You have to be there to know it.</p>
+        </div>
+        <div class="why-item fade-in fade-in-delay-2">
+          <span class="why-icon">⊕</span>
+          <h4>Discomfort is information</h4>
+          <p>The wind that wakes you at 2 a.m. is not an annoyance — it is this island communicating with you. The tide that cuts off a headland you walked an hour ago is telling you something about time. Camping makes you permeable to the place.</p>
+        </div>
+      </div>
+
+      <!-- Camping specifics -->
+      <div class="grid grid--1-2" style="gap:4rem; align-items:start; margin-top:var(--space-xl);">
+        <div class="fade-in">
+          <h3>What to expect</h3>
+          <p style="color:var(--text-mid);">Camping is in Arcadia Meadow — sheltered, south-facing, close to the forest edge where the chanterelles fruit — and, for those who want it, out at Ends of the Earth Meadow on the exposed coastal heath. These are the two primary camping spots. The cabin is available as shelter in serious weather and as a place to cook when the rain is horizontal; otherwise, you live outside.</p>
+          <p style="color:var(--text-mid);">The island is a 15-minute ferry crossing from Shelburne, with a walk or short bike ride to the property from the dock. Plan for weather — the South Shore is maritime, and maritime means changeable. Pack waterproof layers and a sleeping bag rated lower than you think you need.</p>
+          <p style="color:var(--text-mid);">This is a working visit, not a vacation. You'll contribute a day of tending work for every two days you stay. This is not a rule imposed from above — it is the nature of the invitation. Come as a participant. Leave the place a little better than you found it.</p>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div class="landmark-card" style="margin-bottom:1.5rem;">
+            <span class="eyebrow">Pack List</span>
+            <h4 style="margin-bottom:0.75rem;">What to bring</h4>
+            <ul style="padding-left:1.25rem; color:var(--text-mid); font-size:0.9rem; list-style:disc;">
+              <li style="margin-bottom:0.4rem;">Three-season tent (four-season if October or later)</li>
+              <li style="margin-bottom:0.4rem;">Sleeping bag: 5°C or lower, even in summer</li>
+              <li style="margin-bottom:0.4rem;">Waterproof rain jacket and pants</li>
+              <li style="margin-bottom:0.4rem;">Rubber boots or waterproof trail shoes</li>
+              <li style="margin-bottom:0.4rem;">Work gloves and clothes you don't mind getting dirty</li>
+              <li style="margin-bottom:0.4rem;">Container for foraging</li>
+              <li style="margin-bottom:0.4rem;">Field guides (birds, plants, fungi)</li>
+              <li style="margin-bottom:0.4rem;">Good headlamp</li>
+              <li>Leave the noise at home</li>
+            </ul>
+          </div>
+          <div class="photo-ph photo-ph--meadow ar-landscape" style="border-radius:8px;">
+            <span class="photo-ph__label">Photo: Tent at Arcadia Meadow, morning mist, chanterelle foray to follow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TENDING ACTIVITIES -->
+  <section class="section section--sand" id="tending">
+    <div class="container--narrow">
+      <div class="fade-in mb-lg">
+        <span class="eyebrow">The Work</span>
+        <h2>Ways of tending</h2>
+        <p class="lead">Tending is not maintenance. It is a relationship — between the people who show up and the land they show up for. These are the specific ways that relationship takes form on this property.</p>
+      </div>
+
+      <div class="tending-grid">
+        <div class="tending-activity fade-in">
+          <div class="tend-number">01</div>
+          <div>
+            <h4>Trail maintenance</h4>
+            <p>The trail network is maintained by hand — brush clearing, drainage work, blowdown removal, occasional re-routing around erosion. Trail work is physical, meditative, and immediately satisfying. You can see what you've done at the end of the day in a way that most work does not allow. We work in groups, usually in the morning.</p>
+          </div>
+        </div>
+
+        <div class="tending-activity fade-in fade-in-delay-1">
+          <div class="tend-number">02</div>
+          <div>
+            <h4>Invasive species removal</h4>
+            <p>Purple loosestrife, common reed, Japanese knotweed — the invasives arrive wherever there is disturbance, and they need to be met with sustained, manual effort. Pulling invasives is unglamorous work done on your knees in wet places with cold hands. It is also deeply satisfying in a way that is hard to explain until you've done it.</p>
+          </div>
+        </div>
+
+        <div class="tending-activity fade-in">
+          <div class="tend-number">03</div>
+          <div>
+            <h4>Foraging & harvest</h4>
+            <p>Responsible foraging is a tending activity — not extraction but relationship. Learning the blueberry meadows, the chanterelle spots, the cranberry bogs. Understanding which populations are abundant and which need to be left alone. Foraging with experienced practitioners and building the knowledge base that the property needs to tend itself well over time.</p>
+          </div>
+        </div>
+
+        <div class="tending-activity fade-in fade-in-delay-1">
+          <div class="tend-number">04</div>
+          <div>
+            <h4>Ecological observation</h4>
+            <p>The property is a site of ongoing ecological monitoring — plant phenology, bird population counts, intertidal surveys, water temperature recording. This data matters. Visitors with relevant expertise are especially welcome; so are visitors with no expertise but genuine curiosity and willingness to learn to look.</p>
+          </div>
+        </div>
+
+        <div class="tending-activity fade-in">
+          <div class="tend-number">05</div>
+          <div>
+            <h4>Off-grid operations</h4>
+            <p>Paradise Cabin's solar, water, and wood systems require seasonal maintenance. Working with these systems is its own education — in energy, in resource, in what it takes to live in a place without drawing on the grid. Visitors with practical skills (plumbing, electrical, carpentry) can contribute to the cabin's ongoing development.</p>
+          </div>
+        </div>
+
+        <div class="tending-activity fade-in fade-in-delay-1">
+          <div class="tend-number">06</div>
+          <div>
+            <h4>Documentation & storytelling</h4>
+            <p>Writing, photography, sound recording, mapping — the work of capturing what is here so that the record exists and can be shared. The Bearing Witness page of this site grows through the contributions of people who visit and observe. You do not need to be a scientist. You need to pay attention.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ASK -->
+  <section class="the-ask" id="the-ask">
+    <div class="container--narrow">
+      <div class="fade-in">
+        <span class="eyebrow" style="color:var(--gold);">The Ethic</span>
+        <h2 style="color:var(--cream);">What we're asking of each other</h2>
+        <p style="color:var(--seaglass-pale); max-width:60ch;">This community has not yet articulated formal rules. It is working from something more like shared principles — a way of being in a place that the place itself tends to teach, if you stay long enough to be teachable.</p>
+      </div>
+      <div class="ask-columns">
+        <div class="fade-in">
+          <h4 style="color:var(--gold-light); margin-bottom:1rem;">Come as a learner</h4>
+          <ul class="ask-list">
+            <li>Know less than you think you know about this ecosystem</li>
+            <li>Ask before you pick, dig, or change anything</li>
+            <li>Bring questions rather than answers, especially at first</li>
+            <li>Be willing to do the unglamorous work without being asked</li>
+            <li>Learn something specific about one species while you're here</li>
+          </ul>
+        </div>
+        <div class="fade-in fade-in-delay-1">
+          <h4 style="color:var(--gold-light); margin-bottom:1rem;">Come as a keeper</h4>
+          <ul class="ask-list">
+            <li>Leave the property better than you found it — measurably</li>
+            <li>Carry out what you carry in, always</li>
+            <li>Tread lightly on the bog margins and the intertidal</li>
+            <li>Do not disturb nesting birds or hauled-out seals</li>
+            <li>Add to the observation log before you leave</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY VISION -->
+  <section class="community-section" id="community">
+    <div class="container--narrow">
+      <div class="fade-in" style="margin-bottom:var(--space-lg);">
+        <span class="eyebrow" style="color:var(--gold);">The Larger Vision</span>
+        <h2 style="color:var(--cream);">Why gather at a threatened place</h2>
+        <p style="color:var(--stone);">The question this property is trying to answer is not just ecological. It is also social. What does it look like when a community forms around a threatened landscape — not to save it, necessarily, but to witness it, tend it, and practice new ways of being in relation to the natural world?</p>
+      </div>
+      <div class="ethics-grid">
+        <div class="ethic-card fade-in">
+          <h4>Adaptation, not salvation</h4>
+          <p>We are not trying to save this island. We are trying to adapt — to learn to live with the changes that are coming, to maintain relationship with a place even as the place changes, and to bring that practice back to wherever else we live.</p>
+        </div>
+        <div class="ethic-card fade-in fade-in-delay-1">
+          <h4>Witness as resistance</h4>
+          <p>To pay careful attention to a threatened place, to record what is there, to refuse to look away from the changes that are happening — this is a form of resistance. Not dramatic resistance. Quiet, sustained, serious resistance.</p>
+        </div>
+        <div class="ethic-card fade-in">
+          <h4>Community as practice</h4>
+          <p>The community that gathers around this property is itself an experiment. Can people form meaningful bonds around a shared commitment to a place? Can those bonds survive the difficulty of the work and the grief of the losses? We believe yes. We are finding out.</p>
+        </div>
+        <div class="ethic-card fade-in fade-in-delay-1">
+          <h4>Joy as requirement</h4>
+          <p>This work cannot be sustained by grief alone. The chanterelles in August. The eagle over the channel. The fire at the end of a long day. The conversation that goes deep because the place makes you honest. These are not rewards for suffering through the serious parts. They are the reason the serious parts are worth it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GATHER / CONTACT -->
+  <section class="gather-section" id="gather">
+    <div class="container--narrow text-center">
+      <span class="eyebrow">Express Interest</span>
+      <h2 class="fade-in">Ready to come and tend?</h2>
+      <p class="lead fade-in fade-in-delay-1" style="margin:0 auto 2rem;">The tending community is forming. If you want to be part of it — to camp on the property, to join a tending weekend, to contribute your skills and your attention — reach out. Tell us who you are and why you want to come.</p>
+      <div class="fade-in fade-in-delay-2" style="background:var(--cream); border-radius:10px; padding:var(--space-lg); max-width:600px; margin:0 auto; text-align:left;">
+        <h4 style="margin-bottom:1rem;">Get in touch</h4>
+        <p style="color:var(--text-mid); font-size:0.95rem; margin-bottom:1.5rem;">Email us to express interest in visiting, joining a tending weekend, or contributing to the property's ecological monitoring program.</p>
+        <div class="landmark-card" style="border-top-color:var(--teal);">
+          <span class="eyebrow">Contact</span>
+          <p style="font-size:1rem; color:var(--text); margin-bottom:0;"><strong>[contact@adaptationisland.ca]</strong><br>
+          <span style="font-size:0.88rem; color:var(--text-muted);">Placeholder — replace with actual contact address</span></p>
+        </div>
+        <p style="margin-top:1rem; font-size:0.88rem; color:var(--text-muted);">Visits are coordinated seasonally. The property is accessible May through October in most years, with the peak season being July–September. Winter visits are possible for the hardy and the serious.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

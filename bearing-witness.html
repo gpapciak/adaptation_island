@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Climate data for the Adaptation Island property on McNutt's Island — sea level rise projections, ocean acidification, wildfire risk, and an ongoing phenology observation log. Honest, not hopeless.">
+  <meta property="og:title" content="Bearing Witness — Adaptation Island">
+  <meta property="og:description" content="Sea level rise projections, ocean acidification, wildfire risk — and an ongoing record of what is happening at the Adaptation Island property on McNutt's Island, Nova Scotia.">
+  <title>Bearing Witness — Adaptation Island · A Property on McNutt's Island, Nova Scotia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .witness-hero-bg::before {
+      background: linear-gradient(150deg, #071828 0%, #0E3060 50%, #1A5C5C 100%);
+    }
+
+    /* Sea level section */
+    .sea-level-full {
+      background: var(--ocean-deep);
+      padding: var(--space-xl) 0;
+    }
+
+    .sl-scenario-info {
+      display: none;
+    }
+
+    .sl-scenario-info.active {
+      display: block;
+      animation: fadeSlide 0.4s ease;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Acidification */
+    .acid-section {
+      background: var(--teal-dark);
+      color: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .acid-section h2, .acid-section h3 { color: var(--cream); }
+    .acid-section p { color: var(--seaglass-pale); }
+
+    .ph-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: var(--space-lg) 0;
+    }
+
+    .ph-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      border-top: 3px solid var(--seaglass);
+    }
+
+    .ph-item.reference { border-top-color: var(--gold); }
+    .ph-item.warning   { border-top-color: var(--cranberry); }
+
+    .ph-value {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--seaglass-light);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .ph-item.reference .ph-value { color: var(--gold); }
+    .ph-item.warning   .ph-value { color: var(--cranberry); }
+
+    .ph-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* Storms & erosion */
+    .storm-section { padding: var(--space-xl) 0; }
+
+    /* WWII irony */
+    .bunker-irony {
+      background: var(--sand);
+      padding: var(--space-xl) 0;
+    }
+
+    /* Observation log */
+    .obs-section {
+      padding: var(--space-xl) 0;
+    }
+
+    .add-obs-form {
+      background: var(--sand);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-field label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--stone);
+      border-radius: 4px;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: border-color var(--dur);
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+
+    .form-field textarea { resize: vertical; min-height: 80px; }
+
+    @media (max-width: 900px) {
+      .ph-timeline { grid-template-columns: repeat(2, 1fr); }
+      .form-row    { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .ph-timeline { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="min-height:55vh; display:flex; align-items:center;">
+    <div class="page-hero-media">
+      <div class="photo-ph photo-ph--ocean witness-hero-bg" style="position:absolute;inset:0;height:100%;aspect-ratio:unset;border-radius:0;">
+        <span class="photo-ph__label">Photo: High water mark on the granite shore — the line advancing</span>
+      </div>
+    </div>
+    <div class="page-hero-overlay"></div>
+    <div style="position:relative;z-index:2; max-width:var(--max-width); margin:0 auto; padding: calc(var(--space-xl) + 2rem) 2rem var(--space-xl);">
+      <span class="hero-eyebrow">Climate & Change</span>
+      <h1 class="fade-in" style="color:var(--cream); max-width:16ch;">Bearing Witness</h1>
+      <p class="lead fade-in fade-in-delay-1" style="color:rgba(242,235,217,0.88); max-width:55ch;">This page is a record of what is happening to this island — made by people who love it, as an act of resistance and care. The call is not panic but witness: come, see, understand, adapt.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section" style="background:var(--ocean-deep);">
+    <div class="container--narrow text-center">
+      <span class="eyebrow" style="color:var(--gold);">The Stance</span>
+      <h2 class="fade-in" style="color:var(--cream);">Honest, not hopeless</h2>
+      <p class="lead fade-in fade-in-delay-1" style="color:var(--stone); margin:0 auto 1.5rem;">The island is not going to vanish in our lifetimes. Sea level projections for this coastline show significant change — measurable, consequential — but the island exists in deep time, and its loss, when it comes, will be a long slow grief rather than a catastrophe. That long horizon is not comfort. It is a different kind of urgency: enough time to do something, not enough time to do it slowly.</p>
+      <p class="fade-in fade-in-delay-2" style="color:var(--stone); margin:0 auto;">What follows is a synthesis of the best available science, applied to this specific place. It is not alarmism — the projections are grounded in peer-reviewed data. It is not minimization — the changes are real and the trends are clear. It is witness: the practice of looking clearly at what is happening, staying with it long enough to understand it, and making that understanding the basis for action.</p>
+    </div>
+  </section>
+
+  <!-- SEA LEVEL RISE SLIDER -->
+  <section class="sea-level-full" id="sea-level">
+    <div class="container--narrow">
+      <div class="fade-in" style="margin-bottom:var(--space-lg);">
+        <span class="eyebrow" style="color:var(--gold);">Projection</span>
+        <h2 style="color:var(--cream);">Sea level rise</h2>
+        <p style="color:var(--stone);">The South Shore of Nova Scotia faces a compound challenge: global sea level rise combined with ongoing land subsidence from glacial isostatic adjustment (the land is still rebounding — or not, in this case sinking — from the last glaciation). The projections below use moderate-to-high scenarios from the IPCC Sixth Assessment Report, adjusted for regional Atlantic Canada conditions.</p>
+      </div>
+
+      <div class="sea-level-viz fade-in">
+        <svg id="sea-level-svg" class="sea-level-svg" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" aria-label="Sea level rise visualization">
+          <defs>
+            <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#071828"/>
+              <stop offset="100%" stop-color="#1A3A5C"/>
+            </linearGradient>
+            <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1A4A7E"/>
+              <stop offset="100%" stop-color="#071828"/>
+            </linearGradient>
+            <linearGradient id="islandGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#3A5A2A"/>
+              <stop offset="70%" stop-color="#5A7A3A"/>
+              <stop offset="100%" stop-color="#8A9A5A"/>
+            </linearGradient>
+            <linearGradient id="waterOverlayGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1A6A9E" stop-opacity="0.7"/>
+              <stop offset="100%" stop-color="#071828" stop-opacity="0.9"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Sky -->
+          <rect width="800" height="420" fill="url(#skyGrad)"/>
+
+          <!-- Stars (distant) -->
+          <g fill="rgba(255,255,255,0.3)" opacity="0.5">
+            <circle cx="50"  cy="30"  r="1"/>
+            <circle cx="200" cy="20"  r="1"/>
+            <circle cx="350" cy="40"  r="1.5"/>
+            <circle cx="500" cy="15"  r="1"/>
+            <circle cx="650" cy="35"  r="1"/>
+            <circle cx="750" cy="25"  r="1.5"/>
+            <circle cx="100" cy="60"  r="1"/>
+            <circle cx="420" cy="55"  r="1"/>
+            <circle cx="600" cy="60"  r="1"/>
+          </g>
+
+          <!-- OCEAN BACKGROUND -->
+          <rect x="0" y="300" width="800" height="120" fill="url(#oceanGrad)"/>
+
+          <!-- Ocean waves -->
+          <g opacity="0.3" stroke="#4A8AA8" stroke-width="0.8" fill="none">
+            <path d="M0,310 Q100,305 200,312 Q300,318 400,310 Q500,304 600,311 Q700,317 800,308"/>
+            <path d="M0,330 Q100,325 200,332 Q300,338 400,330 Q500,324 600,331 Q700,337 800,328"/>
+            <path d="M0,355 Q100,350 200,357 Q300,363 400,355 Q500,349 600,356 Q700,362 800,353"/>
+          </g>
+
+          <!-- ISLAND LANDMASS (profile / cross-section view) -->
+          <!-- Main island body — stylized elevation profile -->
+          <path id="island-body"
+                d="M50,300 Q80,295 120,270 Q160,250 200,230 Q250,210 300,200 Q350,195 380,198 Q420,200 460,210 Q500,220 540,240 Q580,260 620,275 Q660,288 700,295 Q740,298 760,300 L800,300 L800,420 L0,420 Z"
+                fill="url(#islandGrad)"/>
+
+          <!-- Lighthouse symbol -->
+          <g id="lighthouse-marker">
+            <rect x="595" y="250" width="8" height="28" fill="#FAF8F4" stroke="#B8A898" stroke-width="1"/>
+            <polygon points="591,250 607,250 599,240" fill="#D4A853"/>
+            <line x1="599" y1="238" x2="599" y2="232" stroke="#FAF8F4" stroke-width="1.5"/>
+            <text x="599" y="295" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">Lighthouse</text>
+          </g>
+
+          <!-- Property area marker -->
+          <g id="property-marker">
+            <rect x="310" y="192" width="60" height="16" rx="3" fill="rgba(212,168,83,0.3)" stroke="#D4A853" stroke-width="1.5"/>
+            <text x="340" y="203" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#E8C878">The Property</text>
+          </g>
+
+          <!-- Water overlay layers — controlled by JS slider -->
+          <!-- Layer 1: Current (no overlay) -->
+          <!-- Layer 2: 2050 — ~0.3m rise -->
+          <path id="water-2050"
+                d="M0,307 Q100,302 200,309 Q300,315 400,307 Q500,301 600,308 Q700,314 800,305 L800,420 L0,420 Z"
+                fill="url(#waterOverlayGrad)" opacity="0" id="overlay-2050"/>
+
+          <!-- Layer 3: 2100 — ~1m rise -->
+          <path id="water-2100"
+                d="M0,290 Q80,285 160,282 Q200,280 240,278 Q280,276 320,275 Q400,273 480,276 Q540,278 600,282 Q660,286 720,290 Q760,292 800,290 L800,420 L0,420 Z"
+                fill="url(#waterOverlayGrad)" opacity="0" id="overlay-2100"/>
+
+          <!-- Layer 4: Beyond 2100 — 2m+ rise -->
+          <path id="water-beyond"
+                d="M0,268 Q60,264 120,262 Q180,260 240,258 Q300,256 360,255 Q420,254 480,256 Q540,258 600,262 Q660,266 720,270 Q760,272 800,270 L800,420 L0,420 Z"
+                fill="url(#waterOverlayGrad)" opacity="0" id="overlay-beyond"/>
+
+          <!-- Sea level line markers -->
+          <g id="sea-line-2050" opacity="0">
+            <line x1="0" y1="305" x2="800" y2="305" stroke="#4ABFBF" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.8"/>
+            <text x="10" y="300" font-family="sans-serif" font-size="10" fill="#4ABFBF">+0.3m (2050)</text>
+          </g>
+
+          <g id="sea-line-2100" opacity="0">
+            <line x1="0" y1="278" x2="800" y2="278" stroke="#E8734A" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.8"/>
+            <text x="10" y="273" font-family="sans-serif" font-size="10" fill="#E8734A">+1.0m (2100)</text>
+          </g>
+
+          <g id="sea-line-beyond" opacity="0">
+            <line x1="0" y1="258" x2="800" y2="258" stroke="#C03048" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.8"/>
+            <text x="10" y="253" font-family="sans-serif" font-size="10" fill="#C03048">+2m+ (Beyond)</text>
+          </g>
+
+          <!-- Current sea level line -->
+          <line x1="0" y1="300" x2="800" y2="300" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+          <text x="10" y="316" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.5)">Current sea level</text>
+
+          <!-- Label: Island persists -->
+          <text id="island-label" x="340" y="240" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="rgba(255,255,255,0.6)" font-style="italic">Island interior remains above water</text>
+        </svg>
+      </div>
+
+      <div class="sl-controls fade-in">
+        <div class="sl-labels">
+          <span class="sl-label active" data-step="0">Now</span>
+          <span class="sl-label" data-step="1">2050</span>
+          <span class="sl-label" data-step="2">2100</span>
+          <span class="sl-label" data-step="3">Beyond</span>
+        </div>
+        <input type="range" id="sl-slider" class="sl-slider" min="0" max="3" step="1" value="0"
+               aria-label="Sea level projection timeline">
+
+        <!-- Scenario information panels -->
+        <div class="sl-info">
+          <div class="sl-scenario-info active" id="info-0">
+            <h4>Current sea level</h4>
+            <p>The island's coastline today — beaches, intertidal zones, and low-lying coastal areas defined by the current mean high tide line. The granite ledges and interior uplands are well above current sea level. The beaches and saltmarsh margins are the most dynamic and vulnerable areas.</p>
+          </div>
+          <div class="sl-scenario-info" id="info-1">
+            <h4>2050 projection: +0.3–0.5m (moderate scenario)</h4>
+            <p>By 2050, under moderate emissions scenarios, the South Shore could see 0.3 to 0.5 metres of sea level rise. This would accelerate beach erosion, raise storm surge impacts significantly, and begin affecting low-lying coastal vegetation. Horseshoe Beach would narrow noticeably. The island's overall area would be marginally reduced. The lighthouse road may experience periodic inundation during storm surges.</p>
+          </div>
+          <div class="sl-scenario-info" id="info-2">
+            <h4>2100 projection: +0.8–1.5m (moderate–high scenario)</h4>
+            <p>By 2100, under moderate to high emissions scenarios, 0.8 to 1.5 metres of sea level rise would significantly alter the island's coastline. Sandy beaches would be substantially reduced or lost. Low-lying interior bogs could become brackish. Coastal meadows at the island's outer edges would be inundated during storm events with increasing frequency. The island's interior uplands and the ~200-acre property would remain above water. This is serious change, not extinction.</p>
+          </div>
+          <div class="sl-scenario-info" id="info-3">
+            <h4>Beyond 2100: 2m+ (high emissions / feedback scenarios)</h4>
+            <p>If emissions remain high and feedback loops (ice sheet dynamics, permafrost carbon release) are triggered, projections beyond 2100 become more severe and more uncertain. At 2+ metres, the island would be significantly diminished — its low-lying areas permanently inundated, its shoreline substantially retreated inland, its total area reduced. The high interior of the island and the core of the property might remain. The island would still exist. It would be a different island. This is the long grief: not loss but transformation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem; text-align:center; fade-in">
+        <p style="font-size:0.8rem; color:var(--pebble);">Sea level projections based on IPCC AR6 (2021) regional scenarios for Atlantic Canada, incorporating glacial isostatic adjustment (land subsidence) specific to this coastline. Individual year projections carry significant uncertainty; trend direction and order of magnitude are well-established.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OCEAN ACIDIFICATION -->
+  <section class="acid-section" id="acidification">
+    <div class="container--narrow">
+      <div class="grid grid--1-2" style="gap:4rem; align-items:start;">
+        <div class="fade-in">
+          <span class="eyebrow" style="color:var(--gold);">Ocean Chemistry</span>
+          <h2>Acidification and the lobster</h2>
+          <p>Since the industrial revolution, the world's oceans have absorbed approximately one-third of all CO₂ emitted by human activity. This absorption has been a form of grace — the ocean buffering us from even more dramatic atmospheric change. But it has a cost: as CO₂ dissolves in seawater, it forms carbonic acid, lowering the ocean's pH. What was a slightly alkaline ocean is becoming measurably more acidic.</p>
+          <p>For shell-forming organisms — oysters, mussels, sea urchins, and crucially, lobster — this is not an abstract concern. The calcium carbonate that forms their shells is less available at lower pH. Studies have shown measurable reductions in shell thickness in lobster populations in more acidified waters. Lobster larvae are particularly vulnerable.</p>
+          <p>The local fishery operates in waters that are currently within tolerable ranges — but trending in one direction only. The fishers who work these waters know something has changed, even if the mechanism is not yet fully explained. The data agrees with them.</p>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div class="ph-timeline">
+            <div class="ph-item reference">
+              <span class="ph-value">8.18</span>
+              <span class="ph-label">Pre-industrial ocean pH</span>
+            </div>
+            <div class="ph-item">
+              <span class="ph-value">8.05</span>
+              <span class="ph-label">Current ocean pH (~2024)</span>
+            </div>
+            <div class="ph-item">
+              <span class="ph-value">7.95</span>
+              <span class="ph-label">Projected pH by 2050 (high emissions)</span>
+            </div>
+            <div class="ph-item warning">
+              <span class="ph-value">7.75</span>
+              <span class="ph-label">Projected pH by 2100 (high emissions)</span>
+            </div>
+          </div>
+          <div class="data-callout" style="background:rgba(255,255,255,0.06); border-color:rgba(94,158,142,0.4);">
+            <h4 style="color:var(--gold-light); margin-bottom:0.5rem;">What pH means</h4>
+            <p style="font-size:0.88rem; color:var(--stone); margin-bottom:0;">pH is a logarithmic scale. A drop of 0.1 pH units represents a 26% increase in hydrogen ion concentration — a 26% increase in acidity. The 0.13 drop since pre-industrial times represents a faster rate of change than anything in the ocean's record over the past 300 million years, with the possible exception of mass extinction events.</p>
+          </div>
+
+          <div class="photo-ph photo-ph--ocean ar-landscape" style="border-radius:8px; margin-top:1.5rem;">
+            <span class="photo-ph__label">Photo: Lobster trap being hauled at dawn, Shelburne approaches</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORMS & EROSION -->
+  <section class="storm-section" id="storms">
+    <div class="container--narrow">
+      <div class="grid grid--1-2" style="gap:4rem; align-items:start;">
+        <div class="fade-in">
+          <div class="photo-ph photo-ph--shore ar-landscape" style="border-radius:8px; margin-bottom:1.5rem;">
+            <span class="photo-ph__label">Photo: Storm erosion on the north beach after a December nor'easter</span>
+          </div>
+          <div class="data-callout" style="margin-top:0;">
+            <span class="stat-number" style="font-size:1.6rem; display:block;">+15%</span>
+            <h4 style="margin-bottom:0.4rem;">Increase in extreme precipitation events</h4>
+            <p style="font-size:0.88rem; color:var(--text-mid); margin-bottom:0;">Atlantic Canada has seen measurable increases in the intensity (if not necessarily the frequency) of precipitation events. More intense storms mean more erosion, more storm surge, and accelerated coastal change.</p>
+          </div>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <span class="eyebrow">Coastal Dynamics</span>
+          <h2>Storms and erosion</h2>
+          <p style="color:var(--text-mid);">The island's sandy beaches — including Horseshoe Beach — are among the most dynamic and most vulnerable landscapes on the island. They exist in a constant state of flux: sand moved by seasonal storms, deposited in summer, eroded in winter, replenished from offshore bars. This is natural. What is changing is the intensity of the events that drive this flux.</p>
+          <p style="color:var(--text-mid);">Warmer Atlantic Ocean temperatures fuel stronger storms. Post-tropical hurricanes that historically weakened before reaching the South Shore are increasingly arriving with significant force. The remnants of Fiona (2022) caused extensive coastal erosion across Nova Scotia, including on this stretch of coast. Sea level rise means that storm surge reaches further inland with each passing decade.</p>
+          <p style="color:var(--text-mid);">The granite headlands are resilient — they will be here long after the sandy shores have retreated inland. But the character of the island's coastline will change. Some of what makes it currently recognizable will not survive the next century intact.</p>
+
+          <div class="witness-quote" style="margin-top:1.5rem;">
+            <p>"The beach moved six metres this winter. Not catastrophically — just moved. It does that. It's moving faster."</p>
+            <cite>— Property observation log, spring 2024</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WILDFIRE RISK -->
+  <section class="section section--sand" id="wildfire">
+    <div class="container--narrow">
+      <div class="fade-in mb-lg">
+        <span class="eyebrow">Fire Risk</span>
+        <h2>Wildfire in Atlantic Canada</h2>
+      </div>
+      <div class="grid grid--2" style="gap:3rem; align-items:start;">
+        <div class="fade-in">
+          <p style="color:var(--text-mid);">The 2023 Nova Scotia wildfire season marked a threshold. The Barrington Lake fire in Shelburne County — more than 235,000 hectares, the largest fire in provincial recorded history — was not an isolated anomaly. It was a signal of conditions that fire scientists had been projecting for years: warming temperatures, drying summers, and a forest composition (balsam fir-dominated Acadian forest) that does not carry fire well in normal conditions but burns intensely when it does.</p>
+          <p style="color:var(--text-mid);">The island itself is somewhat protected by its maritime location — sea air moderates temperature and maintains higher relative humidity than the mainland. But the 2023 fires were close enough that smoke was visible and the smell unmistakable. The maritime buffer is not absolute, and as Atlantic Canada's climate continues to shift toward warmer, drier summers, the fire risk on the island will increase.</p>
+          <p style="color:var(--text-mid);">The property is managed with fire risk in mind: fire-resistant buffer zones around the cabin, maintenance of cleared areas that reduce fuel continuity, and awareness of seasonal fire weather conditions as part of the ongoing stewardship practice.</p>
+        </div>
+        <div class="fade-in fade-in-delay-1">
+          <div style="background:linear-gradient(135deg, var(--berry-mid), var(--ocean-mid)); border-radius:8px; padding:2rem; color:var(--cream);">
+            <span class="eyebrow" style="color:var(--gold-light);">2023 Nova Scotia Fires</span>
+            <h3 style="color:var(--cream); margin-bottom:1rem;">By the numbers</h3>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+              <div>
+                <span style="font-family:var(--font-serif); font-size:2rem; font-weight:700; color:var(--gold); display:block; line-height:1;">235,000+</span>
+                <span style="font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone);">Hectares burned (Barrington Lake fire)</span>
+              </div>
+              <div>
+                <span style="font-family:var(--font-serif); font-size:2rem; font-weight:700; color:var(--gold); display:block; line-height:1;">#1</span>
+                <span style="font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone);">Largest fire in Nova Scotia recorded history</span>
+              </div>
+            </div>
+            <p style="font-size:0.88rem; color:rgba(200,232,224,0.85); margin-bottom:0;">The fire burned within 30 kilometres of this coastline. The smoke column was visible from the island's south shore headlands. This is the new baseline.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WWII BUNKER IRONY -->
+  <section class="bunker-irony" id="bunker-irony">
+    <div class="container--narrow">
+      <div class="grid grid--1-2" style="gap:4rem; align-items:center;">
+        <div class="fade-in">
+          <div class="photo-ph photo-ph--ocean ar-landscape" style="border-radius:8px;">
+            <span class="photo-ph__label">Photo: WWII bunker at high tide, spray on concrete, lichen claiming the walls</span>
+          </div>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <span class="eyebrow">A Counterpoint</span>
+          <h2>The guns that cannot help</h2>
+          <p style="color:var(--text-mid);">The WWII gun battery at the island's south end stands as an ironic monument to the kind of threat we know how to build against. The guns were massive — designed to defend against specific, visible, named enemies in identifiable vessels on a specific course through a specific channel. They could be aimed. They could be fired. The threat could, in principle, be defeated.</p>
+          <p style="color:var(--text-mid);">The threat the island faces now arrived without a declaration of war. It came in parts per million of atmospheric CO₂. It came in ocean temperatures rising at the rate of a fraction of a degree per year. It came from everywhere and nowhere at once. It cannot be aimed at. It cannot be bombed. The guns, still imposing in their ruin, have no answer to it.</p>
+          <p style="color:var(--text-mid);">This is not despair. The bunkers are beautiful now — lichen-covered, bird-nested, returned to the island's own ecology. They are evidence that humans adapt. That we can find use, and eventually peace, and eventually beauty in structures built for destruction. The question this island is asking is: can we adapt as quickly as is now required?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBSERVATION LOG -->
+  <section class="obs-section" id="log">
+    <div class="container--narrow">
+      <div class="fade-in mb-lg">
+        <span class="eyebrow">Phenology Record</span>
+        <h2>The observation log</h2>
+        <p class="lead">A running record of what is noticed on the island — phenological notes, seasonal changes, arrivals and departures, things that seem different. This log is the raw material of bearing witness. Anyone who visits the property can add to it.</p>
+      </div>
+
+      <div class="obs-log fade-in">
+        <div class="obs-filters">
+          <button class="obs-filter-btn active" data-season="all">All seasons</button>
+          <button class="obs-filter-btn" data-season="spring">Spring</button>
+          <button class="obs-filter-btn" data-season="summer">Summer</button>
+          <button class="obs-filter-btn" data-season="fall">Fall</button>
+          <button class="obs-filter-btn" data-season="winter">Winter</button>
+        </div>
+        <div class="obs-entries" id="obs-entries">
+          <!-- Entries injected by JS -->
+        </div>
+      </div>
+
+      <!-- Add observation form -->
+      <div class="add-obs-form fade-in">
+        <h4 style="margin-bottom:1rem;">Add an observation</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">If you've visited the property, add what you noticed. You don't need to be a scientist. You need to have paid attention.</p>
+        <form id="obs-form">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="obs-date">Date of observation</label>
+              <input type="date" id="obs-date" name="obs-date" required>
+            </div>
+            <div class="form-field">
+              <label for="obs-season">Season</label>
+              <select id="obs-season" name="obs-season">
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="fall">Fall</option>
+                <option value="winter">Winter</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="obs-title">What did you notice?</label>
+              <input type="text" id="obs-title" name="obs-title" placeholder="e.g. First chanterelles" required>
+            </div>
+          </div>
+          <div class="form-field" style="margin-bottom:1rem;">
+            <label for="obs-body">Describe the observation</label>
+            <textarea id="obs-body" name="obs-body" placeholder="Where, when, what exactly — the more specific the better. These details are what make the record useful over time." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Add to the log</button>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.75rem; margin-bottom:0;">Submissions are reviewed before being added to the public log. This is a placeholder UI — backend integration TBD.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="section" style="background:var(--ocean-deep); text-align:center;">
+    <div class="container--narrow">
+      <h2 class="fade-in" style="color:var(--cream); margin-bottom:1.5rem;">The call is witness</h2>
+      <p class="lead fade-in fade-in-delay-1" style="color:var(--stone); margin:0 auto 2rem;">Not panic. Not despair. Not the paralysis of being told the thing is too big to face. The call is to come to a specific place, know it specifically, love it with full knowledge of what is coming for it, and let that knowledge change the way you live.</p>
+      <div class="btn-group fade-in fade-in-delay-2" style="justify-content:center;">
+        <a href="come-tend.html" class="btn btn--primary">Come & Tend</a>
+        <a href="the-property.html" class="btn btn--ghost">The Property</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
+  <script src="js/sea-level.js"></script>
+  <script src="js/observations.js"></script>
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The ~200-acre Adaptation Island property on McNutt's Island — a proving ground for new ways of living and relating to land. Landmarks, trails, Paradise Cabin, and the vision.">
+  <meta property="og:title" content="The Property — Adaptation Island">
+  <meta property="og:description" content="Paradise Cabin, Arcadia Meadow, Ends of the Earth Meadow, and four named trails — the ~200-acre Adaptation Island property on McNutt's Island, Nova Scotia.">
+  <title>The Property — Adaptation Island · A Property on McNutt's Island, Nova Scotia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .landmark-section {
+      padding: var(--space-xl) 0;
+    }
+
+    .landmark-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: var(--space-lg);
+    }
+
+    .landmark-card-rich {
+      background: var(--sand);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+
+    .landmark-card-rich:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(42,30,16,0.12);
+    }
+
+    .landmark-card-rich .photo-ph {
+      aspect-ratio: 4/3;
+    }
+
+    .landmark-card-body {
+      padding: 1.5rem;
+    }
+
+    .landmark-card-body h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .landmark-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      margin-bottom: 0;
+    }
+
+    /* Property map */
+    .property-map-section {
+      background: var(--ocean-deep);
+      padding: var(--space-xl) 0;
+    }
+
+    .property-map-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--stone);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .legend-line {
+      width: 24px;
+      height: 3px;
+      flex-shrink: 0;
+      border-radius: 2px;
+    }
+
+    /* Trail section */
+    .trails-section {
+      background: var(--sand);
+      padding: var(--space-xl) 0;
+    }
+
+    .vision-section {
+      background: var(--teal-dark);
+      color: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .vision-section h2 { color: var(--cream); }
+    .vision-section .eyebrow { color: var(--gold); }
+
+    .vision-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: var(--space-lg);
+    }
+
+    .pillar {
+      padding: 2rem;
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
+      border-top: 3px solid var(--gold);
+    }
+
+    .pillar h4 { color: var(--cream); margin-bottom: 0.75rem; }
+    .pillar p  { font-size: 0.9rem; color: var(--seaglass-pale); margin-bottom: 0; }
+
+    @media (max-width: 900px) {
+      .landmark-grid    { grid-template-columns: 1fr 1fr; }
+      .vision-pillars   { grid-template-columns: 1fr; gap: 1rem; }
+    }
+
+    @media (max-width: 600px) {
+      .landmark-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="min-height:55vh; display:flex; align-items:center;">
+    <div class="page-hero-media">
+      <div class="photo-ph photo-ph--cabin" style="position:absolute;inset:0;height:100%;aspect-ratio:unset;border-radius:0;">
+        <span class="photo-ph__label">Photo: Paradise Cabin at dawn, mist lifting from Arcadia Meadow</span>
+      </div>
+    </div>
+    <div class="page-hero-overlay"></div>
+    <div style="position:relative;z-index:2; max-width:var(--max-width); margin:0 auto; padding: calc(var(--space-xl) + 2rem) 2rem var(--space-xl);">
+      <span class="hero-eyebrow">~200 Acres · South Shore Nova Scotia</span>
+      <h1 class="fade-in" style="color:var(--cream);">The Property</h1>
+      <p class="lead fade-in fade-in-delay-1" style="color:rgba(242,235,217,0.88);">Not a private retreat. An active experiment — in off-grid living, land stewardship, and new models of human relationship with a threatened landscape. The cabin is the heart. The land is the work. The community is still forming.</p>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="vision-section">
+    <div class="container--narrow">
+      <div class="grid grid--1-2" style="align-items:center; gap:4rem;">
+        <div class="fade-in">
+          <span class="eyebrow">The Animating Idea</span>
+          <h2>Paradise, earned</h2>
+          <p style="color:var(--seaglass-pale);">The cabin is called Paradise — not ironically, and not naively. It is paradise in the oldest sense: a beloved place, tended with care, returned to with joy. But paradise here is not ease or escape. It is the name you give a place that asks something of you and gives more back. A proving ground can be a paradise of sorts — if you understand that the proving is the point.</p>
+          <p style="color:var(--seaglass-pale);">The question this property is trying to answer is practical and urgent: What does it look like to live lightly on land you love, in full knowledge of what is coming for it? Not to escape to wilderness. Not to own and develop. But to inhabit — carefully, actively, with attention — a place that is teaching you something if you're willing to be taught.</p>
+          <p style="color:var(--seaglass-pale);">The property is off-grid by intention. The cabin runs on what falls from the sky and what the sun provides. The trails are maintained by human hands. The invasive species are pulled out by human hands. The chanterelles are found by people who have learned to look. This is not primitive — it is a different kind of sophisticated.</p>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div class="photo-ph photo-ph--meadow ar-landscape" style="border-radius:8px; margin-bottom:1.5rem;">
+            <span class="photo-ph__label">Photo: Ends of the Earth Meadow, looking out to open Atlantic</span>
+          </div>
+          <div class="stats-strip" style="background:rgba(255,255,255,0.07); border-radius:8px; grid-template-columns:1fr 1fr;">
+            <div class="stat-item">
+              <span class="stat-number" style="font-size:2rem;">~200</span>
+              <span class="stat-label">Acres</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" style="font-size:2rem;">100%</span>
+              <span class="stat-label">Off-grid</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="vision-pillars">
+        <div class="pillar fade-in">
+          <h4>Off-Grid Living</h4>
+          <p>Solar power, rainwater, woodstove. Paradise Cabin demonstrates that comfortable habitation doesn't require grid infrastructure — and that the effort of providing for yourself changes your relationship to what you consume.</p>
+        </div>
+        <div class="pillar fade-in fade-in-delay-1">
+          <h4>Active Stewardship</h4>
+          <p>Trail maintenance, invasive species removal, ecological observation, responsible foraging. The land is tended, not just visited. The work is part of the relationship, not separate from it.</p>
+        </div>
+        <div class="pillar fade-in fade-in-delay-2">
+          <h4>Community & Learning</h4>
+          <p>The property is a site for gathering — of people who want to practice new ways of living, who want to learn from a specific place, who want to bear witness alongside others rather than alone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANDMARKS -->
+  <section class="landmark-section" id="landmarks">
+    <div class="container">
+      <div class="chapter-intro fade-in">
+        <span class="eyebrow">Named Places</span>
+        <h2>Landmarks of the property</h2>
+        <p class="lead">Each named place on the property has a character and a history. These are not arbitrary labels — they reflect something real about what each place is and what it offers.</p>
+      </div>
+
+      <div class="landmark-grid">
+        <!-- Paradise Cabin -->
+        <div class="landmark-card-rich fade-in">
+          <div class="photo-ph photo-ph--cabin">
+            <span class="photo-ph__label">Photo: Paradise Cabin exterior, solar panels, wood stacked</span>
+          </div>
+          <div class="landmark-card-body">
+            <span class="eyebrow">The Heart</span>
+            <h3>Paradise Cabin</h3>
+            <p>The off-grid cabin at the center of the property. Solar-powered, wood-heated, rainwater-fed. The place where the day begins and ends, where the fire is lit, where people gather after a day on the land. Simply built and genuinely comfortable — what comfort feels like when you've earned it.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="tag tag--gold">Off-grid</span>
+              <span class="tag tag--teal">Base camp</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arcadia Meadow -->
+        <div class="landmark-card-rich fade-in fade-in-delay-1">
+          <div class="photo-ph photo-ph--meadow">
+            <span class="photo-ph__label">Photo: Arcadia Meadow in late July, blueberries coming in</span>
+          </div>
+          <div class="landmark-card-body">
+            <span class="eyebrow">Summer Gathering</span>
+            <h3>Arcadia Meadow</h3>
+            <p>The main meadow adjoining Paradise Cabin — open, south-facing, sheltered enough from the north wind to warm pleasantly in summer. Wild blueberries carpet the ground in August. The chanterelles appear at the meadow's forest edge. A place of abundance, if you know where to look and what to look for.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="tag tag--gold">Foraging</span>
+              <span class="tag">Camping</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ends of the Earth -->
+        <div class="landmark-card-rich fade-in fade-in-delay-2">
+          <div class="photo-ph photo-ph--ocean">
+            <span class="photo-ph__label">Photo: Ends of the Earth Meadow, ocean horizon, evening light</span>
+          </div>
+          <div class="landmark-card-body">
+            <span class="eyebrow">The Edge</span>
+            <h3>Ends of the Earth Meadow</h3>
+            <p>The name is earned. This coastal meadow sits at the property's outermost reach, where the spruce gives way to salt-wind heath and the Atlantic stretches unbroken to the horizon. Nothing between you and Portugal. The place to come when you need the full weight of the ocean to reorient you.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="tag tag--ocean">Coastal</span>
+              <span class="tag tag--teal">Viewpoint</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Old Homestead -->
+        <div class="landmark-card-rich fade-in">
+          <div class="photo-ph photo-ph--shore">
+            <span class="photo-ph__label">Photo: Old Homestead foundation stones, ferns growing through</span>
+          </div>
+          <div class="landmark-card-body">
+            <span class="eyebrow">Ancestral Site</span>
+            <h3>Old Homestead & Root Cellar</h3>
+            <p>The remains of an earlier habitation — stone foundation walls, the unmistakable depression of a root cellar, and the cultural landscape of a family that lived here and is no longer named on any map. Possibly connected to the island's Black Loyalist land grants of 1783. The site is treated with care and respect.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="tag tag--berry">Historical</span>
+              <span class="tag">Archaeological</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Apple Tree -->
+        <div class="landmark-card-rich fade-in fade-in-delay-1">
+          <div class="photo-ph photo-ph--meadow">
+            <span class="photo-ph__label">Photo: Old Apple Tree in spring bloom, homestead clearing behind</span>
+          </div>
+          <div class="landmark-card-body">
+            <span class="eyebrow">Living Relic</span>
+            <h3>Old Apple Tree & Homestead</h3>
+            <p>Somewhere between 100 and 200 years old, this apple tree is a survivor — twisted by salt wind, productive in good years, wholly improbable in this landscape. Someone planted it. That act of planting, of imagining future abundance, is one of the things this property is trying to continue in its own way.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="tag tag--gold">Heritage</span>
+              <span class="tag">Foraging</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Property Edge -->
+        <div class="landmark-card-rich fade-in fade-in-delay-2">
+          <div class="photo-ph photo-ph--forest">
+            <span class="photo-ph__label">Photo: Property boundary trail, spruce canopy, light through</span>
+          </div>
+          <div class="landmark-card-body">
+            <span class="eyebrow">The Perimeter</span>
+            <h3>The Coastal Headlands</h3>
+            <p>Where the property meets the open coast, granite ledges drop to the intertidal zone. At low tide, a different world — starfish, sea anemones, periwinkles, and the occasional great blue heron standing with the patience of someone who has nowhere better to be. These edges are the property's most dynamic places.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="tag tag--teal">Intertidal</span>
+              <span class="tag tag--ocean">Coastal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTY MAP -->
+  <section class="property-map-section" id="property-map">
+    <div class="property-map-wrap">
+      <div class="fade-in" style="margin-bottom:2rem;">
+        <span class="eyebrow" style="color:var(--gold);">Property Map</span>
+        <h2 style="color:var(--cream);">The ~200 Acres</h2>
+        <p style="color:var(--stone);">Hover over landmarks to learn more. Trails are shown as dashed lines. The property sits on the island's western shore, with frontage on the channel and coastal headlands on the outer edge.</p>
+      </div>
+
+      <div class="map-container fade-in" id="property-map-container">
+        <svg id="property-svg" class="map-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" aria-label="Property map showing landmarks and trails">
+          <defs>
+            <linearGradient id="waterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#071828"/>
+              <stop offset="100%" stop-color="#1A4A7E"/>
+            </linearGradient>
+            <linearGradient id="landGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#3A5A3A"/>
+              <stop offset="100%" stop-color="#5A7A4A"/>
+            </linearGradient>
+            <linearGradient id="meadowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#8A9A5A"/>
+              <stop offset="100%" stop-color="#C8B870"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Background: ocean -->
+          <rect width="800" height="600" fill="url(#waterGrad)"/>
+
+          <!-- Ocean texture lines -->
+          <g opacity="0.15" stroke="#4A8AA8" stroke-width="0.5">
+            <path d="M0,100 Q200,90 400,105 Q600,115 800,98"/>
+            <path d="M0,200 Q200,188 400,205 Q600,215 800,195"/>
+            <path d="M0,300 Q200,288 400,302 Q600,315 800,295"/>
+            <path d="M0,400 Q200,388 400,404 Q600,415 800,395"/>
+            <path d="M0,500 Q200,488 400,504 Q600,513 800,495"/>
+          </g>
+
+          <!-- Property land mass -->
+          <path d="M80,80 L720,60 Q760,62 765,100 L750,520 Q748,560 710,565 L90,545 Q55,542 52,505 L65,100 Q65,78 80,80 Z"
+                fill="url(#landGrad)" opacity="0.95"/>
+
+          <!-- Forest texture -->
+          <g fill="#2A4A2A" opacity="0.3">
+            <circle cx="150" cy="150" r="40"/>
+            <circle cx="220" cy="180" r="35"/>
+            <circle cx="300" cy="140" r="45"/>
+            <circle cx="550" cy="160" r="50"/>
+            <circle cx="640" cy="200" r="40"/>
+            <circle cx="680" cy="140" r="35"/>
+            <circle cx="120" cy="350" r="45"/>
+            <circle cx="200" cy="420" r="38"/>
+            <circle cx="650" cy="380" r="42"/>
+            <circle cx="700" cy="450" r="35"/>
+          </g>
+
+          <!-- Arcadia Meadow -->
+          <ellipse cx="400" cy="280" rx="90" ry="55" fill="url(#meadowGrad)" opacity="0.85"
+                   class="map-landmark" data-name="Arcadia Meadow"
+                   data-desc="The main meadow — wild blueberries, chanterelles at the forest edge, the heart of summer abundance."/>
+
+          <!-- Ends of the Earth Meadow -->
+          <ellipse cx="680" cy="350" rx="55" ry="40" fill="url(#meadowGrad)" opacity="0.75"
+                   class="map-landmark" data-name="Ends of the Earth Meadow"
+                   data-desc="The property's outermost reach — salt-wind heath, unbroken Atlantic horizon. Nothing between you and Portugal."/>
+
+          <!-- Trails -->
+          <!-- Main loop trail -->
+          <path d="M370,380 Q350,450 280,490 Q200,520 150,480 Q100,440 120,360 Q140,280 200,230 Q260,180 340,200 Q400,215 420,280"
+                fill="none" stroke="#E8C878" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.9"/>
+
+          <!-- Lighthouse Road trail -->
+          <path d="M370,380 Q390,420 420,460 Q460,510 520,530 Q580,548 640,535 Q700,520 720,470"
+                fill="none" stroke="#E8C878" stroke-width="2" stroke-dasharray="8,5" opacity="0.9"/>
+
+          <!-- Headland spur trail -->
+          <path d="M420,280 Q500,290 580,310 Q640,325 680,350"
+                fill="none" stroke="#E8C878" stroke-width="2" stroke-dasharray="6,4" opacity="0.75"/>
+
+          <!-- Homestead connector -->
+          <path d="M400,280 Q390,320 370,380"
+                fill="none" stroke="#C4A882" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7"/>
+
+          <!-- Paradise Cabin -->
+          <g class="map-landmark" data-name="Paradise Cabin"
+             data-desc="The off-grid cabin — solar, wood, rainwater. The heart of the property and the base for all operations. Wake here to birdsong and no Wi-Fi.">
+            <rect x="342" y="348" width="56" height="44" rx="4" fill="#8B5E3A" stroke="#D4A853" stroke-width="2.5"/>
+            <polygon points="342,348 370,325 398,348" fill="#6A3A1A" stroke="#D4A853" stroke-width="1.5"/>
+            <!-- Solar panels symbol -->
+            <rect x="350" y="354" width="10" height="7" fill="#4A8AA8" opacity="0.8"/>
+            <rect x="364" y="354" width="10" height="7" fill="#4A8AA8" opacity="0.8"/>
+            <text x="370" y="408" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#E8C878" font-weight="bold">Paradise Cabin</text>
+          </g>
+
+          <!-- Old Homestead -->
+          <g class="map-landmark" data-name="Old Homestead & Root Cellar"
+             data-desc="Foundation stones of an earlier life on this land. Possibly connected to Black Loyalist land grants of 1783. Walk quietly here.">
+            <rect x="175" y="330" width="30" height="26" rx="2" fill="none" stroke="#B8A882" stroke-width="2" stroke-dasharray="4,2"/>
+            <circle cx="190" cy="368" r="8" fill="none" stroke="#B8A882" stroke-width="1.5"/>
+            <text x="190" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#C4A882">Old Homestead</text>
+          </g>
+
+          <!-- Old Apple Tree -->
+          <g class="map-landmark" data-name="Old Apple Tree"
+             data-desc="100-200 years old, twisted by salt wind. Someone planted this tree imagining future abundance. That act continues.">
+            <circle cx="240" cy="455" r="12" fill="#4A6A2A" stroke="#8A9A5A" stroke-width="1.5"/>
+            <line x1="240" y1="467" x2="240" y2="478" stroke="#8B7355" stroke-width="2"/>
+            <text x="240" y="495" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#C4A882">Apple Tree</text>
+          </g>
+
+          <!-- Coastal headlands -->
+          <path d="M700,100 Q755,120 762,200 Q760,300 750,400"
+                fill="none" stroke="#6B9E8E" stroke-width="3" opacity="0.6"/>
+
+          <!-- Lighthouse Road marker -->
+          <g class="map-landmark" data-name="Lighthouse Road"
+             data-desc="The island's main road, connecting the northern landing to the lighthouse and gun battery at the south end.">
+            <line x1="520" y1="530" x2="680" y2="540" stroke="#FAF8F4" stroke-width="2.5" opacity="0.7"/>
+            <text x="600" y="558" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#FAF8F4" opacity="0.8">Lighthouse Road</text>
+          </g>
+
+          <!-- Compass rose -->
+          <g transform="translate(720,80)">
+            <circle cx="0" cy="0" r="22" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <polygon points="0,-18 4,-4 0,-8 -4,-4" fill="#E8C878"/>
+            <polygon points="0,18 4,4 0,8 -4,4" fill="rgba(255,255,255,0.4)"/>
+            <polygon points="-18,0 -4,4 -8,0 -4,-4" fill="rgba(255,255,255,0.4)"/>
+            <polygon points="18,0 4,4 8,0 4,-4" fill="rgba(255,255,255,0.4)"/>
+            <text y="-22" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#E8C878" font-weight="bold">N</text>
+          </g>
+
+          <!-- Scale -->
+          <g transform="translate(60,555)">
+            <line x1="0" y1="0" x2="80" y2="0" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <line x1="0" y1="-5" x2="0" y2="5" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <line x1="80" y1="-5" x2="80" y2="5" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <text x="40" y="-8" text-anchor="middle" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)">~500m</text>
+          </g>
+
+          <!-- Water label -->
+          <text x="30" y="300" font-family="Georgia, serif" font-size="11" fill="rgba(255,255,255,0.25)" transform="rotate(-90,30,300)">ATLANTIC OCEAN</text>
+        </svg>
+        <div class="map-tooltip" id="property-tooltip"></div>
+      </div>
+
+      <div class="map-legend fade-in">
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#D4A853;"></div>
+          <span>Named Landmark</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-line" style="background:#E8C878; border-top: 3px dashed #E8C878; height:0;"></div>
+          <span>Trail Network</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#8A9A5A; border-radius:2px;"></div>
+          <span>Meadow</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#2A4A2A; border-radius:2px;"></div>
+          <span>Forest</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot" style="background:#6B9E8E; border-radius:2px;"></div>
+          <span>Coastal Edge</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAILS -->
+  <section class="trails-section" id="trails">
+    <div class="container--narrow">
+      <div class="fade-in" style="margin-bottom:var(--space-lg);">
+        <span class="eyebrow">Trail Network</span>
+        <h2>Named trails</h2>
+        <p class="lead">The property's trails are maintained by hand — cleared in spring, walked throughout the season, kept open through care rather than machinery. Each route has a character and a purpose.</p>
+      </div>
+
+      <div class="trail-item fade-in">
+        <div class="trail-icon">→</div>
+        <div>
+          <h4>The Lighthouse Road Trail</h4>
+          <div class="trail-meta">
+            <span>~2.5 km one way</span>
+            <span>Moderate</span>
+            <span>Connects to island road network</span>
+          </div>
+          <p style="color:var(--text-mid); margin-top:0.75rem;">From Paradise Cabin, the main trail runs south and east through mixed spruce-fir forest toward Lighthouse Road, eventually connecting to the island's main artery. The route passes through the oldest forest on the property and offers the best chanterelle foraging in late August. The trail emerges at Lighthouse Road near the approach to the gun battery.</p>
+        </div>
+      </div>
+
+      <div class="trail-item fade-in">
+        <div class="trail-icon">↺</div>
+        <div>
+          <h4>The Arcadia Loop</h4>
+          <div class="trail-meta">
+            <span>~3.5 km round trip</span>
+            <span>Easy to Moderate</span>
+            <span>Interior property circuit</span>
+          </div>
+          <p style="color:var(--text-mid); margin-top:0.75rem;">A loop through the property's interior, beginning and ending at Paradise Cabin, passing through Arcadia Meadow, the Old Homestead site, and returning through the northern forest. The best trail for daily walks — variable, sheltered, and full of the small discoveries that reward repetition: fungi, bird activity, the changing light through the canopy.</p>
+        </div>
+      </div>
+
+      <div class="trail-item fade-in">
+        <div class="trail-icon">◎</div>
+        <div>
+          <h4>The Headland Spur</h4>
+          <div class="trail-meta">
+            <span>~1.2 km one way</span>
+            <span>Easy</span>
+            <span>Coastal viewpoint</span>
+          </div>
+          <p style="color:var(--text-mid); margin-top:0.75rem;">The short trail from Arcadia Meadow to the Ends of the Earth Meadow — across the open heath to the coastal headlands. In wind, it can feel extreme. In calm, it is sublime. The trail ends at the property's outermost granite ledge, where seals haul out at low tide and the lobster boats pass close enough to wave at.</p>
+        </div>
+      </div>
+
+      <div class="trail-item fade-in">
+        <div class="trail-icon">⌁</div>
+        <div>
+          <h4>The Old Apple Trail</h4>
+          <div class="trail-meta">
+            <span>~0.8 km</span>
+            <span>Easy</span>
+            <span>Heritage route</span>
+          </div>
+          <p style="color:var(--text-mid); margin-top:0.75rem;">A short connector linking the Arcadia Loop to the Old Homestead and the ancient apple tree. Part of the trail follows what appears to be an older track — the kind of compaction that builds up over generations of use. The apple tree is worth the walk in any season, but in spring bloom and in autumn fruit it is genuinely extraordinary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="background:var(--ocean-deep); text-align:center;">
+    <div class="container--narrow">
+      <span class="eyebrow" style="color:var(--gold)">Ready to show up</span>
+      <h2 style="color:var(--cream); margin-bottom:1rem;">Come and tend the land</h2>
+      <p class="lead" style="color:var(--stone); margin:0 auto 2rem;">Camp on the property. Walk the trails. Learn what lives here. The proving ground is only proven by people doing the work.</p>
+      <div class="btn-group" style="justify-content:center;">
+        <a href="come-tend.html" class="btn btn--primary">Come & Tend</a>
+        <a href="activities.html" class="btn btn--ghost">What to Do Here</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
+  <script src="js/map-interactions.js"></script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An illustrated map of the Adaptation Island property on McNutt's Island, Nova Scotia — landmarks, trail network, and named places. With a simple locator showing the island's position off Shelburne.">
+  <meta property="og:title" content="The Map — Adaptation Island">
+  <meta property="og:description" content="Property map with landmarks, trails, and named places — plus a locator showing McNutt's Island off the South Shore of Nova Scotia.">
+  <title>The Map — Adaptation Island · A Property on McNutt's Island, Nova Scotia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Map page layout */
+    .map-page-hero {
+      background: var(--ocean-deep);
+      padding: calc(var(--space-xl) + 4rem) 0 var(--space-lg);
+      text-align: center;
+    }
+
+    .map-page-hero h1 { color: var(--cream); }
+    .map-page-hero p  { color: var(--stone); }
+
+    /* Locator map */
+    .locator-section {
+      background: var(--ocean-mid);
+      padding: var(--space-xl) 0;
+    }
+
+    .locator-note {
+      text-align: center;
+      color: var(--stone);
+      font-size: 0.9rem;
+      margin-top: 1.25rem;
+    }
+
+    .locator-note a { color: var(--teal); }
+
+    .island-map-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Property map section */
+    .property-map-full {
+      background: var(--sand);
+      padding: var(--space-xl) 0;
+    }
+
+    /* Landmark key */
+    .landmark-key {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .landmark-key h4 {
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .key-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+    }
+
+    .key-symbol {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+    }
+
+    /* Getting here section */
+    .getting-here {
+      padding: var(--space-xl) 0;
+    }
+
+    .route-steps {
+      counter-reset: step;
+      padding: 0;
+    }
+
+    .route-step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--stone);
+      align-items: start;
+    }
+
+    .route-step::before {
+      content: counter(step);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--teal-dark);
+      color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .route-step h4 { margin-bottom: 0.3rem; }
+    .route-step p  { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 0; }
+
+    @media (max-width: 768px) {
+      .key-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .key-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- PAGE HERO -->
+  <div class="map-page-hero">
+    <span class="hero-eyebrow" style="color:var(--gold);">Orientation</span>
+    <h1 class="fade-in">The Map</h1>
+    <p class="lead fade-in fade-in-delay-1" style="margin:0 auto; max-width:52ch;">An illustrated guide to the Adaptation Island property — landmarks, trail network, and named places — with a simple locator showing McNutt's Island's position off Shelburne, Nova Scotia.</p>
+  </div>
+
+  <!-- LOCATOR MAP -->
+  <section class="locator-section" id="locator">
+    <div class="island-map-wrap">
+      <p class="fade-in" style="color:var(--stone); text-align:center; margin-bottom:1.5rem;">McNutt's Island sits off the South Shore of Nova Scotia, a 15-minute ferry from Shelburne. The Adaptation Island property occupies approximately 200 acres on the island's southwestern shore.</p>
+      <div class="map-container fade-in" style="border-radius:12px; overflow:hidden; max-width:640px; margin:0 auto;">
+        <svg class="map-svg" viewBox="0 0 640 340" xmlns="http://www.w3.org/2000/svg"
+             aria-label="Locator map: McNutt's Island off Shelburne, Nova Scotia">
+          <defs>
+            <radialGradient id="locatorOcean" cx="50%" cy="60%" r="70%">
+              <stop offset="0%" stop-color="#1A4A7E"/>
+              <stop offset="100%" stop-color="#071828"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Ocean -->
+          <rect width="640" height="340" fill="url(#locatorOcean)"/>
+          <!-- Subtle wave lines -->
+          <g opacity="0.08" stroke="#4A8AB8" stroke-width="0.8" fill="none">
+            <path d="M0,160 Q160,152 320,160 Q480,168 640,156"/>
+            <path d="M0,260 Q160,252 320,260 Q480,268 640,256"/>
+          </g>
+
+          <!-- Mainland Nova Scotia -->
+          <path d="M0,0 L640,0 L640,100 Q520,112 400,98 Q310,88 230,98 Q140,108 60,96 Q30,92 0,98 Z" fill="#3A5A3A" opacity="0.55"/>
+          <text x="320" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="rgba(255,255,255,0.45)" font-style="italic">Mainland Nova Scotia</text>
+          <!-- Shelburne -->
+          <circle cx="330" cy="93" r="5" fill="#D4A853" opacity="0.9"/>
+          <text x="330" y="83" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#E8C878">Shelburne</text>
+          <!-- Ferry crossing -->
+          <line x1="330" y1="100" x2="314" y2="158" stroke="#D4A853" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+          <text x="362" y="136" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.35)">~15 min ferry</text>
+          <!-- Channel label -->
+          <text x="430" y="148" font-family="Georgia,serif" font-size="11" fill="rgba(255,255,255,0.2)" font-style="italic">The Channel</text>
+
+          <!-- McNutt's Island — simple elongated form -->
+          <path d="M258,163 Q276,156 300,154 Q324,152 344,160 Q360,167 364,182 Q368,198 364,248 Q360,288 348,310 Q336,326 318,329 Q300,331 284,326 Q268,318 258,300 Q246,280 244,248 Q240,212 244,185 Q248,170 258,163 Z" fill="#4A6A3A" opacity="0.88"/>
+          <!-- Property marker -->
+          <circle cx="252" cy="238" r="10" fill="rgba(212,168,83,0.2)" stroke="#D4A853" stroke-width="1.5"/>
+          <circle cx="252" cy="238" r="4" fill="#D4A853"/>
+          <text x="236" y="260" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#E8C878" font-style="italic">The Property</text>
+          <!-- Island label -->
+          <text x="315" y="248" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="rgba(255,255,255,0.4)" font-style="italic">McNutt's Island</text>
+          <!-- Atlantic Ocean -->
+          <text x="530" y="250" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="rgba(255,255,255,0.15)" font-style="italic">Atlantic</text>
+          <text x="530" y="268" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="rgba(255,255,255,0.15)" font-style="italic">Ocean</text>
+          <!-- Compass -->
+          <g transform="translate(598,52)">
+            <circle cx="0" cy="0" r="22" fill="rgba(0,0,0,0.45)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <polygon points="0,-17 3,-5 0,-8 -3,-5" fill="#E8C878"/>
+            <polygon points="0,17 3,5 0,8 -3,5" fill="rgba(255,255,255,0.3)"/>
+            <text y="-21" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#E8C878" font-weight="bold">N</text>
+          </g>
+        </svg>
+      </div>
+      <p class="locator-note fade-in">For a full map of McNutt's Island — including the lighthouse, WWII gun battery, Horseshoe Beach, and all island roads — visit <a href="https://mcnuttsisland.org" target="_blank" rel="noopener">mcnuttsisland.org</a>.</p>
+    </div>
+  </section>
+
+  <!-- PROPERTY MAP -->
+  <section class="property-map-full" id="property-map">
+    <div class="island-map-wrap">
+      <div class="fade-in" style="margin-bottom:1.5rem;">
+        <span class="eyebrow" style="color:var(--gold);">The Property in Detail</span>
+        <p style="color:var(--text-mid); margin-top:0.5rem; margin-bottom:0;">The ~200-acre Adaptation Island property — landmarks, trail network, and named places. Hover over features for descriptions.</p>
+      </div>
+      <div class="map-container fade-in" id="property-map-container-2" style="border-radius:12px; overflow:hidden;">
+          <svg id="property-svg-2" class="map-svg" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+            <!-- (Same SVG as the-property.html property map — full version) -->
+            <defs>
+              <linearGradient id="waterGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stop-color="#071828"/>
+                <stop offset="100%" stop-color="#1A4A7E"/>
+              </linearGradient>
+              <linearGradient id="landGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%"   stop-color="#3A5A3A"/>
+                <stop offset="100%" stop-color="#5A7A4A"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="600" fill="url(#waterGrad2)"/>
+            <g opacity="0.15" stroke="#4A8AA8" stroke-width="0.5">
+              <path d="M0,100 Q200,90 400,105 Q600,115 800,98"/>
+              <path d="M0,250 Q200,240 400,252 Q600,260 800,248"/>
+              <path d="M0,400 Q200,390 400,400 Q600,410 800,395"/>
+            </g>
+            <path d="M80,80 L720,60 Q760,62 765,100 L750,520 Q748,560 710,565 L90,545 Q55,542 52,505 L65,100 Q65,78 80,80 Z"
+                  fill="url(#landGrad2)" opacity="0.95"/>
+            <g fill="#2A4A2A" opacity="0.3">
+              <circle cx="150" cy="150" r="40"/>
+              <circle cx="220" cy="180" r="35"/>
+              <circle cx="300" cy="140" r="45"/>
+              <circle cx="550" cy="160" r="50"/>
+              <circle cx="640" cy="200" r="40"/>
+              <circle cx="120" cy="350" r="45"/>
+              <circle cx="200" cy="420" r="38"/>
+              <circle cx="650" cy="380" r="42"/>
+            </g>
+            <ellipse cx="400" cy="280" rx="90" ry="55" fill="#8A9A5A" opacity="0.85"
+                     class="map-landmark" data-name="Arcadia Meadow"
+                     data-desc="The main meadow — wild blueberries, chanterelles at the forest edge. The heart of summer abundance."/>
+            <ellipse cx="680" cy="350" rx="55" ry="40" fill="#8A9A5A" opacity="0.75"
+                     class="map-landmark" data-name="Ends of the Earth Meadow"
+                     data-desc="Salt-wind heath at the property's outermost reach — unbroken Atlantic horizon, seals on the ledges below."/>
+            <path d="M370,380 Q350,450 280,490 Q200,520 150,480 Q100,440 120,360 Q140,280 200,230 Q260,180 340,200 Q400,215 420,280"
+                  fill="none" stroke="#E8C878" stroke-width="2.5" stroke-dasharray="8,5" opacity="0.9"/>
+            <path d="M370,380 Q390,420 420,460 Q460,510 520,530 Q580,548 640,535 Q700,520 720,470"
+                  fill="none" stroke="#E8C878" stroke-width="2" stroke-dasharray="8,5" opacity="0.9"/>
+            <path d="M420,280 Q500,290 580,310 Q640,325 680,350"
+                  fill="none" stroke="#E8C878" stroke-width="2" stroke-dasharray="6,4" opacity="0.75"/>
+            <path d="M400,280 Q390,320 370,380"
+                  fill="none" stroke="#C4A882" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7"/>
+            <g class="map-landmark" data-name="Paradise Cabin"
+               data-desc="The off-grid cabin — solar, wood, rainwater. Base camp and heart of the property.">
+              <rect x="342" y="348" width="56" height="44" rx="4" fill="#8B5E3A" stroke="#D4A853" stroke-width="2.5"/>
+              <polygon points="342,348 370,325 398,348" fill="#6A3A1A" stroke="#D4A853" stroke-width="1.5"/>
+              <text x="370" y="408" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#E8C878" font-weight="bold">Paradise Cabin</text>
+            </g>
+            <g class="map-landmark" data-name="Old Homestead & Root Cellar"
+               data-desc="Foundation stones of earlier habitation — possibly connected to Black Loyalist land grants of 1783.">
+              <rect x="175" y="330" width="30" height="26" rx="2" fill="none" stroke="#B8A882" stroke-width="2" stroke-dasharray="4,2"/>
+              <text x="190" y="390" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#C4A882">Old Homestead</text>
+            </g>
+            <g class="map-landmark" data-name="Old Apple Tree"
+               data-desc="100–200 years old. Someone planted this imagining future abundance. That act continues.">
+              <circle cx="240" cy="455" r="12" fill="#4A6A2A" stroke="#8A9A5A" stroke-width="1.5"/>
+              <text x="240" y="495" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#C4A882">Apple Tree</text>
+            </g>
+            <line x1="520" y1="530" x2="680" y2="540" stroke="#FAF8F4" stroke-width="2.5" opacity="0.7"/>
+            <text x="600" y="558" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#FAF8F4" opacity="0.8">Lighthouse Road</text>
+            <g transform="translate(720,80)">
+              <circle cx="0" cy="0" r="22" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <polygon points="0,-18 4,-4 0,-8 -4,-4" fill="#E8C878"/>
+              <polygon points="0,18 4,4 0,8 -4,4" fill="rgba(255,255,255,0.4)"/>
+              <text y="-22" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#E8C878" font-weight="bold">N</text>
+            </g>
+          </svg>
+          <div class="map-tooltip" id="property-tooltip-2"></div>
+        </div>
+      </div>
+      <div class="landmark-key fade-in">
+        <h4>Key</h4>
+        <div class="key-grid">
+          <div class="key-item">
+            <div class="key-symbol" style="background:#8A9A5A;"></div>
+            <span>Meadow</span>
+          </div>
+          <div class="key-item">
+            <div class="key-symbol" style="background:#8B5E3A; border: 2px solid #D4A853; border-radius:3px;"></div>
+            <span>Paradise Cabin</span>
+          </div>
+          <div class="key-item">
+            <div class="key-symbol" style="background:none; border: 2px dashed #B8A882; border-radius:2px;"></div>
+            <span>Old Homestead</span>
+          </div>
+          <div class="key-item">
+            <div class="key-symbol" style="background:#4A6A2A; border: 1.5px solid #8A9A5A;"></div>
+            <span>Old Apple Tree</span>
+          </div>
+          <div class="key-item">
+            <div class="key-symbol" style="background:rgba(232,200,120,0.7); height:3px; width:24px; border-radius:2px;"></div>
+            <span>Trails</span>
+          </div>
+          <div class="key-item">
+            <div class="key-symbol" style="background:rgba(255,255,255,0.7); height:3px; width:24px; border-radius:2px;"></div>
+            <span>Lighthouse Road</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GETTING HERE -->
+  <section class="getting-here section--sand" id="getting-here">
+    <div class="container--narrow">
+      <div class="fade-in mb-lg">
+        <span class="eyebrow">Access</span>
+        <h2>Getting to the island</h2>
+        <p class="lead">The island is McNutt's Island, Nova Scotia — the property (Adaptation Island) is located on its southwestern shore. McNutt's is accessible year-round, conditions permitting, by a short ferry crossing from Shelburne. There is no bridge. This is, entirely, by design.</p>
+      </div>
+      <ol class="route-steps">
+        <div class="route-step fade-in">
+          <div>
+            <h4>Arrive in Shelburne, Nova Scotia</h4>
+            <p>Shelburne is approximately 3.5 hours by road from Halifax, or 2 hours from Yarmouth. The town has accommodations, fuel, groceries, and outfitters. Stock up before crossing — the island has no shops. Shelburne itself is worth a day of exploration for its extraordinary Black Loyalist and Loyalist history.</p>
+          </div>
+        </div>
+        <div class="route-step fade-in">
+          <div>
+            <h4>Take the ferry from Shelburne</h4>
+            <p>A scheduled passenger and small vehicle ferry connects Shelburne to the island's northern landing. The crossing takes approximately 15 minutes in settled conditions and runs on a seasonal schedule. Check current schedule and book ahead in summer. Bicycle transport is available. [Ferry schedule link — TBD]</p>
+          </div>
+        </div>
+        <div class="route-step fade-in">
+          <div>
+            <h4>Travel south to the property</h4>
+            <p>From the landing dock, the property entrance is approximately 3 km south via Island Road — walkable in under an hour, bikeable in 15 minutes. The road passes through mixed forest and offers the first views of the channel. The property entrance is unmarked by obvious signage — watch for the gate described in your visit confirmation.</p>
+          </div>
+        </div>
+        <div class="route-step fade-in">
+          <div>
+            <h4>Arrive at Paradise Cabin</h4>
+            <p>The trail from the property entrance to Paradise Cabin is approximately 800m through the forest. Follow the marked trail — the cabin is in the first open clearing you reach. If no one is there, the door is open. The fire is ready to be laid. The kettle is on the shelf. Welcome.</p>
+          </div>
+        </div>
+      </ol>
+
+      <div class="landmark-card fade-in" style="margin-top:var(--space-lg); border-top-color:var(--teal);">
+        <span class="eyebrow">Important Notes</span>
+        <h4 style="margin-bottom:0.75rem;">Before you go</h4>
+        <ul style="padding-left:1.25rem; color:var(--text-mid); font-size:0.9rem; list-style:disc;">
+          <li style="margin-bottom:0.5rem;">The ferry does not run in unsafe weather. Check conditions and have a backup plan.</li>
+          <li style="margin-bottom:0.5rem;">The island has no cell service in most areas. Download offline maps before you cross.</li>
+          <li style="margin-bottom:0.5rem;">The island has no grocery store, pharmacy, or medical facility. Bring everything you need.</li>
+          <li style="margin-bottom:0.5rem;">Visits to the property are by arrangement only — contact us before arriving.</li>
+          <li>The lobster season runs November through June. The channel is busy with working boats during this period. Respect the fishers' workspace.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
+  <script src="js/map-interactions.js"></script>
+</body>
+</html>

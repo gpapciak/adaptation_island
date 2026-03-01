@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What lives on and around the Adaptation Island property — chanterelles, wild berries, the Acadian forest, the bogs, the birds observed from the property's meadows and headlands. A steward's close observation of a specific place.">
+  <meta property="og:title" content="Flora & Fauna — Adaptation Island">
+  <meta property="og:description" content="A steward's close observation of what lives on and around the Adaptation Island property on McNutt's Island — foraging, forest, threats, bogs, and birds.">
+  <title>Flora & Fauna — Adaptation Island · A Property on McNutt's Island, Nova Scotia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .flora-hero-media::before {
+      background: linear-gradient(145deg, #1A3A18 0%, #3A5A2A 40%, #6B8A3A 70%, #D4A853 100%);
+    }
+
+    .nature-section {
+      padding: var(--space-xl) 0;
+    }
+
+    .nature-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Foraging feature */
+    .foraging-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: var(--space-lg);
+    }
+
+    .forage-item {
+      text-align: center;
+    }
+
+    .forage-item .photo-ph {
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+      aspect-ratio: 1;
+    }
+
+    .forage-item h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .forage-item p  { font-size: 0.9rem; color: var(--text-mid); }
+
+    /* Threat cards */
+    .threat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: var(--space-lg);
+    }
+
+    .threat-card {
+      background: var(--sand);
+      border-radius: 8px;
+      padding: 1.75rem;
+      border-left: 4px solid var(--berry);
+    }
+
+    .threat-card h4 { margin-bottom: 0.6rem; color: var(--berry-mid); }
+    .threat-card p  { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 0; }
+
+    /* Fire callout */
+    .fire-callout {
+      background: linear-gradient(135deg, var(--berry-mid) 0%, var(--ocean-mid) 100%);
+      color: var(--cream);
+      border-radius: 10px;
+      padding: var(--space-lg);
+      margin: var(--space-lg) 0;
+    }
+
+    .fire-callout h3 { color: var(--gold-light); margin-bottom: 1rem; }
+    .fire-callout p  { color: rgba(242,235,217,0.88); max-width: none; }
+
+    /* Bog section */
+    .bog-section {
+      background: linear-gradient(160deg, #1A3A18 0%, #2A4A28 50%, #0E2A1A 100%);
+      color: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .bog-section h2, .bog-section h3 { color: var(--seaglass-light); }
+    .bog-section p { color: rgba(200, 232, 224, 0.85); }
+    .bog-section .eyebrow { color: var(--gold); }
+
+    /* Marine section */
+    .marine-section {
+      background: var(--ocean-deep);
+      color: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+
+    .marine-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: var(--space-lg);
+    }
+
+    .marine-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border-top: 3px solid var(--teal);
+    }
+
+    .marine-card h4 { color: var(--seaglass-light); margin-bottom: 0.5rem; }
+    .marine-card p  { font-size: 0.88rem; color: var(--stone); margin-bottom: 0; }
+
+    /* Species lists */
+    .species-column-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .foraging-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .threat-grid   { grid-template-columns: 1fr; }
+      .marine-grid   { grid-template-columns: 1fr 1fr; }
+      .species-column-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .marine-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="min-height:55vh; display:flex; align-items:center;">
+    <div class="page-hero-media">
+      <div class="photo-ph photo-ph--forest flora-hero-media" style="position:absolute;inset:0;height:100%;aspect-ratio:unset;border-radius:0;">
+        <span class="photo-ph__label">Photo: Chanterelles pushing through crowberry mat, Arcadia Meadow forest edge</span>
+      </div>
+    </div>
+    <div class="page-hero-overlay"></div>
+    <div style="position:relative;z-index:2; max-width:var(--max-width); margin:0 auto; padding: calc(var(--space-xl) + 2rem) 2rem var(--space-xl);">
+      <span class="hero-eyebrow">Natural Life</span>
+      <h1 class="fade-in" style="color:var(--cream);">Flora & Fauna</h1>
+      <p class="lead fade-in fade-in-delay-1" style="color:rgba(242,235,217,0.88); max-width:50ch;">A love letter to what lives here — written in full knowledge of what threatens it, and full of the particular joy that only a specific place can teach you.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section section--sand">
+    <div class="container--narrow text-center">
+      <span class="eyebrow">What Lives Here</span>
+      <h2 class="fade-in">What abundance looks like</h2>
+      <p class="lead fade-in fade-in-delay-1" style="margin:0 auto 1.5rem;">In August, the chanterelles push through the duff at Arcadia Meadow's forest edge. The wild blueberries darken to blue-black in the south-facing meadows. The cranberries redden in the bog. A bald eagle hunts the channel with the unhurried confidence of a creature at the top of its food web. This is what the property gives you, if you're paying attention.</p>
+      <p class="fade-in fade-in-delay-2" style="margin:0 auto;">This abundance is real. It is also contingent. The browntail moth larvae are moving north. The hemlock woolly adelgid is coming. The bogs are under pressure. The fires of 2023 came close enough to change the way we think about what is permanent here. What lives on and around this property lives in conditions that are, quietly and measurably, changing. That is not a reason to look away. It is a reason to look more carefully — and to keep a record of what you see.</p>
+    </div>
+  </section>
+
+  <!-- FORAGING -->
+  <section class="nature-section" id="foraging">
+    <div class="nature-inner">
+      <div class="fade-in" style="text-align:center; margin-bottom:var(--space-md);">
+        <span class="eyebrow">Wild Harvest</span>
+        <h2>What the property gives</h2>
+        <p class="lead" style="margin:0 auto;">Foraging on the property is not a hobby. It is a way of knowing a specific place — of understanding its rhythms, its gifts, and its limits. These three are the signature treasures.</p>
+      </div>
+
+      <div class="foraging-grid">
+        <div class="forage-item fade-in">
+          <div class="photo-ph photo-ph--meadow">
+            <span class="photo-ph__label">Photo: Wild blueberries in full ripeness, August, Arcadia Meadow</span>
+          </div>
+          <h3>Wild Blueberries</h3>
+          <p><em>Vaccinium angustifolium</em></p>
+          <p>Smaller than anything in a grocery store and immeasurably more interesting. The property's exposed meadows and rocky barrens carry wild low-bush blueberry from July through August — the fruit intensely flavoured, sun-warm in the hand. Foraging them is slow, meditative, and addictive. The best are in the open south-facing meadows. Bring a container. Bring patience.</p>
+          <div class="tag tag--teal" style="margin-top:0.75rem;">July – August</div>
+        </div>
+
+        <div class="forage-item fade-in fade-in-delay-1">
+          <div class="photo-ph photo-ph--forest">
+            <span class="photo-ph__label">Photo: Chanterelles — golden, trumpet-shaped — emerging from forest duff</span>
+          </div>
+          <h3>Chanterelles</h3>
+          <p><em>Cantharellus cibarius</em></p>
+          <p>The property's most prized foraging discovery. Golden, trumpet-shaped, smelling of apricot and earth — chanterelles appear in late summer at the edges where forest meets meadow, in the duff under balsam fir and birch. They are not rare here, if you know where to look. The knowing takes a season or two. Once you have it, you have it forever. This is what we mean by learning a place.</p>
+          <div class="tag tag--gold" style="margin-top:0.75rem;">Late July – September</div>
+        </div>
+
+        <div class="forage-item fade-in fade-in-delay-2">
+          <div class="photo-ph photo-ph--bog">
+            <span class="photo-ph__label">Photo: Cranberries in the sphagnum bog, late October light</span>
+          </div>
+          <h3>Bog Cranberries</h3>
+          <p><em>Vaccinium oxycoccos</em></p>
+          <p>Small, tart, brilliant — the bog cranberries that grow among the sphagnum are a different creature from any cultivated variety. Harvested in September and October, they require patience and wet feet and a willingness to move slowly through a bog that does not want to be hurried. The harvest rewards the effort with a berry that tastes like the distillation of a cold clear autumn day.</p>
+          <div class="tag tag--berry" style="margin-top:0.75rem;">September – October</div>
+        </div>
+      </div>
+
+      <!-- Raspberries aside -->
+      <div class="pull-quote fade-in" style="margin-top:var(--space-lg);">
+        And the wild raspberries, in July, along every trail edge and disturbed clearing — abundant enough to stop you repeatedly on any walk, each one a small argument that this place is worth paying attention to.
+      </div>
+    </div>
+  </section>
+
+  <!-- ACADIAN FOREST -->
+  <section class="nature-section section--sand" id="acadian-forest">
+    <div class="nature-inner">
+      <div class="grid grid--1-2" style="align-items:start; gap:5rem;">
+        <div class="fade-in">
+          <span class="eyebrow">Forest Ecosystem</span>
+          <h2>The Acadian forest</h2>
+          <p style="color:var(--text-mid);">The Acadian forest is one of the most biologically rich temperate forest types in North America — a transition zone between boreal and deciduous, carrying the species of both. On the property, the forest is primarily balsam fir and black spruce at the exposed coastal edges, with red spruce, white birch, and sheltered hollows where yellow birch stands that may be two centuries old.</p>
+          <p style="color:var(--text-mid);">This is an old forest in the sense that matters most — not old-growth by most definitions (this land has been logged and settled and disturbed), but old in its ecological relationships. The mycorrhizal networks beneath the soil are ancient. The understory plants know their niches precisely. Walking through it slowly, you start to understand that you are moving through something that is, in a real sense, more intelligent than any single organism in it.</p>
+          <p style="color:var(--text-mid);">It is also a forest in transition. The climate conditions under which Acadian forests developed are changing faster than the forests can adapt. The particular vulnerability of balsam fir to changing moisture regimes, the northward creep of pests and pathogens that historically could not survive Nova Scotia winters — these are not distant threats. They are measurable in the forest on this property right now.</p>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div class="photo-ph photo-ph--forest ar-portrait" style="border-radius:8px; margin-bottom:1.5rem;">
+            <span class="photo-ph__label">Photo: Acadian forest interior, light through balsam fir canopy</span>
+          </div>
+
+          <div class="species-grid">
+            <div class="species-item">
+              <strong>Balsam Fir</strong>
+              <em>Abies balsamea — dominant canopy</em>
+            </div>
+            <div class="species-item">
+              <strong>Black Spruce</strong>
+              <em>Picea mariana — bog margins</em>
+            </div>
+            <div class="species-item">
+              <strong>Red Spruce</strong>
+              <em>Picea rubens — sheltered interior</em>
+            </div>
+            <div class="species-item">
+              <strong>Yellow Birch</strong>
+              <em>Betula alleghaniensis — old individual stands</em>
+            </div>
+            <div class="species-item">
+              <strong>Labrador Tea</strong>
+              <em>Rhododendron groenlandicum</em>
+            </div>
+            <div class="species-item">
+              <strong>Bunchberry</strong>
+              <em>Cornus canadensis — ground cover</em>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2023 Fire Callout -->
+      <div class="fire-callout fade-in" style="margin-top:var(--space-lg);">
+        <span class="eyebrow" style="color:var(--gold-light);">Near Miss — 2023</span>
+        <h3>The Nova Scotia Wildfires</h3>
+        <p>In May and June of 2023, Nova Scotia experienced the worst wildfire season in its recorded history. The Barrington Lake fire in Shelburne County burned more than 235,000 hectares — the largest fire ever recorded in the province. The smoke was visible from the island. The smell was unmistakable for weeks.</p>
+        <p style="margin-top:1rem;">The island itself was not burned. But the fires changed something — they made visible a risk that forest scientists had been discussing for years in language too technical to break through into public consciousness. The Acadian forest is not a fire-adapted ecosystem. Its species evolved in conditions of high moisture and moderate fire risk. As Atlantic Canada warms and dries, those conditions are shifting. The 2023 fires were not an anomaly. They were a signal.</p>
+        <p style="margin-top:1rem;">The property holds this experience as a kind of inheritance — not trauma, but information. The forest here is tended in part with fire risk in mind. Understanding the landscape's vulnerabilities is part of stewardship.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREATS -->
+  <section class="nature-section" id="threats">
+    <div class="nature-inner">
+      <div class="fade-in" style="margin-bottom:var(--space-md);">
+        <span class="eyebrow">Forest Health</span>
+        <h2>What threatens what lives here</h2>
+        <p class="lead">The threats are real, specific, and already present. Naming them honestly is part of what it means to love this place without illusion.</p>
+      </div>
+
+      <div class="threat-grid">
+        <div class="threat-card fade-in">
+          <h4>Browntail Moth</h4>
+          <p><em>Euproctis chrysorrhoea</em> — The browntail moth, historically confined to coastal Maine and a few Nova Scotia counties, is expanding its range northward as winters moderate. Its larvae carry toxic hairs that cause a rash similar to poison ivy in humans and can defoliate oak trees repeatedly, eventually killing them. The moth is already present in parts of Nova Scotia and represents a significant threat to the island's deciduous components.</p>
+        </div>
+
+        <div class="threat-card fade-in fade-in-delay-1">
+          <h4>Hemlock Woolly Adelgid</h4>
+          <p><em>Adelges tsugae</em> — An invasive insect from Asia that has already devastated Eastern hemlock populations across much of the eastern United States. The adelgid historically could not survive Nova Scotia winters, but warming temperatures are opening a corridor northward. If it arrives, it would represent a catastrophic threat to hemlock populations — which, while not dominant on the island, are part of the forest's structural complexity.</p>
+        </div>
+
+        <div class="threat-card fade-in">
+          <h4>Invasive Species Pressure</h4>
+          <p>Purple loosestrife in the wetlands. Japanese knotweed at disturbed edges. Common reed (Phragmites) advancing in coastal marshes. Each invasive species represents the homogenization of a once-distinctive landscape — the replacement of unique local ecology with generalist species that follow human disturbance anywhere in the world. Active removal is part of the property's stewardship work.</p>
+        </div>
+
+        <div class="threat-card fade-in fade-in-delay-1">
+          <h4>Shifting Species Ranges</h4>
+          <p>As temperatures increase and precipitation patterns change, the species composition of the Acadian forest is shifting. Balsam fir — the island's dominant canopy tree — is at particular risk from warming. Hardwood species from further south are moving north. The forest being tended today is not the forest that will exist here in fifty years. Adaptation means tending for a future that does not yet exist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOG ECOSYSTEMS -->
+  <section class="bog-section" id="bogs">
+    <div class="container--narrow">
+      <div class="grid grid--1-2" style="gap:4rem; align-items:center;">
+        <div class="fade-in">
+          <span class="eyebrow">Ancient Ecosystems</span>
+          <h2>The bogs</h2>
+          <p>The bogs on and adjacent to the property are among its most ancient and most irreplaceable features. Bog formation begins in conditions of high moisture, low nutrient availability, and cool temperatures — conditions that have prevailed here for the ten thousand years since the last glaciation. The peat that has accumulated in that time represents an almost unimaginable density of stored carbon.</p>
+          <p>A bog is not a swamp. It is a self-sustaining, highly complex ecosystem built primarily by sphagnum moss, which creates conditions of high acidity and low oxygen that effectively pickle everything that falls into it. The vegetation of a bog — sundew, pitcher plants, cranberry, Labrador tea, black spruce — is exquisitely adapted to these conditions and cannot exist without them.</p>
+          <p>What threatens bogs is mostly what threatens subtlety: drainage, disturbance, warming temperatures, and the introduction of nutrients that break the chemical balance on which the whole system depends. Once a bog is damaged, it does not recover on any human timescale. The carbon it releases is simply gone — into the atmosphere, contributing to the warming that damaged the bog in the first place.</p>
+          <div class="data-callout" style="margin-top:1.5rem; background:rgba(94,158,142,0.15); border-color:rgba(94,158,142,0.4);">
+            <span class="stat-number" style="font-size:1.8rem; display:block; color:var(--seaglass-light);">1,000+</span>
+            <h4 style="color:var(--seaglass-light); margin-bottom:0.4rem;">Years of peat accumulation</h4>
+            <p style="color:var(--stone); font-size:0.88rem; margin-bottom:0;">The property's mature bogs represent millennia of carbon storage. Bog drainage releases this carbon in years, not centuries.</p>
+          </div>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div class="photo-ph photo-ph--bog ar-portrait" style="border-radius:8px;">
+            <span class="photo-ph__label">Photo: Sphagnum bog, pitcher plants in foreground, black spruce at margin</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIRDS FROM THE PROPERTY -->
+  <section class="nature-section section--sand" id="birds">
+    <div class="nature-inner">
+      <div class="grid grid--1-2" style="gap:4rem; align-items:start;">
+        <div class="fade-in">
+          <span class="eyebrow">Observed from the Property</span>
+          <h2>Birds</h2>
+          <p style="color:var(--text-mid);">From the property's meadows, headlands, and forest edges, the birding is remarkable. Bald eagles hunt the channel daily — they have recovered strongly from near-extirpation in the 1970s and are now simply part of the morning. Osprey nest on every suitable elevated structure within sight of the property. In May and August, warblers push through in numbers that make it impossible to walk the trails without stopping repeatedly.</p>
+          <p style="color:var(--text-mid);">The Ends of the Earth Meadow headland is the property's best birding spot — a coastal point that concentrates migrants and commands a view of the channel where loons, eider, and guillemot work the inshore waters year-round. Sit still and pay attention. This is one of the things the property teaches: that stillness is itself a form of activity.</p>
+          <p style="color:var(--text-mid);">The lobster boats at first light, the seals on the outer ledges, the porpoise in the channel on calm mornings — these are the coastal edges of the property's ecology. The data on what ocean warming is doing to this system is on the <a href="bearing-witness.html" style="color:var(--teal);">Bearing Witness</a> page.</p>
+        </div>
+        <div class="fade-in fade-in-delay-2">
+          <div class="photo-ph photo-ph--sunrise ar-landscape" style="border-radius:8px; margin-bottom:1.5rem;">
+            <span class="photo-ph__label">Photo: Bald eagle over the channel — a daily presence from the property</span>
+          </div>
+          <div class="species-grid" style="margin-top:0;">
+            <div class="species-item" style="border-left-color:var(--gold);">
+              <strong>Bald Eagle</strong><em>Daily, year-round</em>
+            </div>
+            <div class="species-item" style="border-left-color:var(--gold);">
+              <strong>Osprey</strong><em>Nesting, May–September</em>
+            </div>
+            <div class="species-item">
+              <strong>Great Blue Heron</strong><em>Intertidal, year-round</em>
+            </div>
+            <div class="species-item">
+              <strong>Common Eider</strong><em>Channel, year-round</em>
+            </div>
+            <div class="species-item">
+              <strong>Blackpoll Warbler</strong><em>Migration, Aug–Sept</em>
+            </div>
+            <div class="species-item">
+              <strong>Common Loon</strong><em>Channel, April–Nov</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MCNUTT'S ISLAND ALLIANCE CALLOUT -->
+  <section class="section">
+    <div class="container--narrow" style="text-align:center;">
+      <div style="background:var(--sand); border:1px solid var(--stone); border-radius:10px; padding:2.5rem; max-width:680px; margin:0 auto;" class="fade-in">
+        <span class="eyebrow">Broader Island Ecology</span>
+        <h3 style="font-size:1.4rem; margin-bottom:0.75rem;">The island's full natural history</h3>
+        <p style="color:var(--text-mid); margin:0 auto 1.75rem; max-width:50ch;">For a comprehensive ecology guide to McNutt's Island — marine life, intertidal surveys, the complete bird list, and the island's full natural history — visit the McNutt's Island Alliance.</p>
+        <a href="https://mcnuttsisland.org" class="btn btn--primary" target="_blank" rel="noopener">mcnuttsisland.org →</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
