@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Dusk sky gradient -->
+  <defs>
+    <radialGradient id="moonGlow" cx="62%" cy="30%" r="18%">
+      <stop offset="0%" stop-color="#fff8e1" stop-opacity="1"/>
+      <stop offset="40%" stop-color="#ffd966" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#7a9ab8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8aaabf"/>
+      <stop offset="100%" stop-color="#b8cdd8"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d6b8a"/>
+      <stop offset="100%" stop-color="#2a4f6a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect x="0" y="0" width="100" height="62" fill="url(#skyGrad)"/>
+
+  <!-- Moon glow halo -->
+  <circle cx="62" cy="30" r="16" fill="url(#moonGlow)"/>
+
+  <!-- Moon -->
+  <circle cx="62" cy="30" r="7" fill="#fff8e1"/>
+  <circle cx="62" cy="30" r="6" fill="#fffde7"/>
+
+  <!-- Water -->
+  <rect x="0" y="62" width="100" height="38" fill="url(#waterGrad)"/>
+
+  <!-- Moonpath reflection on water -->
+  <path d="M52 62 L46 100 L78 100 L72 62 Z" fill="#ffd966" opacity="0.18"/>
+  <path d="M56 62 L52 100 L72 100 L68 62 Z" fill="#fff8e1" opacity="0.12"/>
+
+  <!-- Spruce tree line silhouette (left) -->
+  <!-- Tree 1 -->
+  <polygon points="8,62 12,44 16,62" fill="#1a2820"/>
+  <polygon points="6,58 12,40 18,58" fill="#1a2820"/>
+  <!-- Tree 2 -->
+  <polygon points="16,62 21,46 26,62" fill="#1c2a22"/>
+  <polygon points="15,57 21,42 27,57" fill="#1c2a22"/>
+  <!-- Tree 3 -->
+  <polygon points="24,62 28,48 32,62" fill="#1a2820"/>
+  <polygon points="23,58 28,44 33,58" fill="#1a2820"/>
+  <!-- Tree 4 smaller -->
+  <polygon points="0,62 4,50 8,62" fill="#1c2a22"/>
+
+  <!-- Pebble beach strip -->
+  <path d="M0 62 Q50 60, 100 62 L100 68 Q50 66, 0 68 Z" fill="#5a6a5e" opacity="0.7"/>
+
+  <!-- Subtle horizon shimmer -->
+  <path d="M0 63 Q25 61, 50 63 Q75 65, 100 63" stroke="#7ab8d4" stroke-width="0.8" fill="none" opacity="0.5"/>
+</svg>
